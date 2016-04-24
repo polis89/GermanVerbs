@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GermanVerbs</string>
+    <string name="action_language">Language</string>
+    <string name="practice">Practice</string>
+    <string name="verbs">Verbs</string>
+    <string name="settings">Settings</string>
+    <string name="help_btn">Info</string>
+</resources>
