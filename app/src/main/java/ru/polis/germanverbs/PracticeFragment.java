@@ -26,6 +26,11 @@ public class PracticeFragment extends Fragment{
         return instanse;
     }
 
+    public static Fragment getNewInstance() {
+        Log.i(LOG_TAG, "getNewInstance");
+        return new PracticeFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,13 +80,13 @@ public class PracticeFragment extends Fragment{
                     Toast.makeText(getContext(), "Game 4", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.help_game_1:
-                    Toast.makeText(getContext(), "Info Game 4", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Info Game 1", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.help_game_2:
-                    Toast.makeText(getContext(), "Info Game 4", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Info Game 2", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.help_game_3:
-                    Toast.makeText(getContext(), "Info Game 4", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Info Game 3", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.help_game_4:
                     Toast.makeText(getContext(), "Info Game 4", Toast.LENGTH_SHORT).show();

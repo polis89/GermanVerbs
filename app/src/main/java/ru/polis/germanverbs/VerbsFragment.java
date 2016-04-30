@@ -21,6 +21,10 @@ public class VerbsFragment extends Fragment {
         return instanse;
     }
 
+    public static Fragment getNewInstance() {
+        return new VerbsFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

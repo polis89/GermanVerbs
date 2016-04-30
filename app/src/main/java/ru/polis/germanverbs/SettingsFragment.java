@@ -21,6 +21,11 @@ public class SettingsFragment extends Fragment {
         return instanse;
     }
 
+    public static Fragment getNewInstance() {
+        return new SettingsFragment();
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
