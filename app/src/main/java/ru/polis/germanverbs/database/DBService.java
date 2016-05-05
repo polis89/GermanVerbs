@@ -45,7 +45,17 @@ public class DBService {
                 ContentValues contentValues = new ContentValues();
 
                 //Add word data to CV
-                contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE, line[0]);
+
+                //Если есть 3 форма инфинитив
+                if(line[0].contains("(")){
+                    String[] tempValues = line[0].split("[\\(\\)]");
+                    Log.i(LOG_TAG, "Temp = " + Arrays.toString(tempValues));
+                    contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE, tempValues[0]);
+                    contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE_3PERSON, tempValues[1]);
+
+                } else {
+                    contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE, line[0]);
+                }
                 contentValues.put(DBHelper.TABLE_WORD_KEY_PRATERITUM, line[1]);
                 contentValues.put(DBHelper.TABLE_WORD_KEY_PERFEKT, line[2]);
                 contentValues.put(DBHelper.TABLE_WORD_KEY_PROGRESS, 0);
@@ -63,5 +73,17 @@ public class DBService {
         cursor.close();
         writableDatabase.close();
         dbHelper.close();
+    }
+
+    public SQLiteDatabase getReadableDatabase(Context context) {
+        if(dbHelper == null){
+            Log.i(LOG_TAG, "New dbHelper");
+            dbHelper = new DBHelper(context);
+        }
+        return dbHelper.getReadableDatabase();
+    }
+
+    public DBHelper getDBHelper() {
+        return dbHelper;
     }
 }

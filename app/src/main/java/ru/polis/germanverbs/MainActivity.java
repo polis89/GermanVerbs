@@ -42,22 +42,26 @@ public class MainActivity extends AppCompatActivity {
     private Language language;
     private BottomBar bottomBar;
 
+    private  VerbsFragment verbsFragment;
+    private boolean firstStart = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Проверка на первый запуск
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
-        Boolean isFirstLaunch = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
-        if(isFirstLaunch){
+        firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
+        //Init verbsFragment
+        verbsFragment = (VerbsFragment) VerbsFragment.getNewInstance();
+
+        if(firstStart){
             firstStart(); //Первый Запуск
         } else {
             String langString = sharedPreferences.getString(SHARED_PREF_LANGUAGE_TAG, "en");
             Log.i(LOG_TAG, "LangString = " + langString);
             language = Language.getLanguageByLocale(langString);
         }
-        Log.i(LOG_TAG,"Language = " + language.name());
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = PracticeFragment.getNewInstance();
                         break;
                     case 1:
-                        fragment = VerbsFragment.getNewInstance();
+                        fragment = verbsFragment;
                         break;
                     case 2:
                         fragment = SettingsFragment.getNewInstance();
@@ -137,11 +141,13 @@ public class MainActivity extends AppCompatActivity {
 //                }
             }
         });
+        if(!firstStart){
+            verbsFragment.setAdapter(this);
+        }
     }
 
     private void firstStart() {
         Log.i(LOG_TAG, "first start");
-
         //Извлечение списка слов и открытие DBService для FillDBAsyncTask
         try {
             InputStream inStream = getAssets().open("words.txt");
@@ -214,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem languageMenuItem = menu.getItem(0);
+        MenuItem languageMenuItem = menu.getItem(1);
         languageMenuItem.setIcon(language.getImageResID());
         return true;
     }
@@ -258,6 +264,11 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             dbService.addWordsInDB(listOfWords);
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            verbsFragment.setAdapter();
         }
     }
 }

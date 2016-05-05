@@ -21,6 +21,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String TABLE_WORD_NAME = "word";
     public static final String TABLE_WORD_KEY_ID = "_id";
     public static final String TABLE_WORD_KEY_INFINITIVE = "infinitive";
+    public static final String TABLE_WORD_KEY_INFINITIVE_3PERSON = "infinitive_3_person";
     public static final String TABLE_WORD_KEY_PRATERITUM = "prateritum";
     public static final String TABLE_WORD_KEY_PERFEKT = "perfekt";
     public static final String TABLE_WORD_KEY_IS_ACTIVE = "is_active";
@@ -36,6 +37,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE " + TABLE_WORD_NAME + " ( " +
                 TABLE_WORD_KEY_ID + " integer primary key, " +
                 TABLE_WORD_KEY_INFINITIVE + " text UNIQUE NOT NULL, " +
+                TABLE_WORD_KEY_INFINITIVE_3PERSON + " text, " +
                 TABLE_WORD_KEY_PRATERITUM + " text NOT NULL, " +
                 TABLE_WORD_KEY_PERFEKT + " text NOT NULL, " +
                 Language.RUS.getNameForDB() + " text NOT NULL, " +
