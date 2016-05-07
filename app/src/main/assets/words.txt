@@ -1,155 +1,155 @@
-backen(bäckt)-backte-hat gebacken-bake-печь
-befehlen(befiehlt)-befahl-hat befohlen-command-приказывать
-beginnen-begann-hat begonnen-begin-начинать
-beißen-biss-hat gebissen-bite-кусать
-bekommen-bekam-hat bekommen-get-получать
-bergen(birgt)-barg-hat geborgen-salvage-спасать
-betrügen-betrog-hat betrogen-deceive-лгать
-bewegen-bewog-hat bewogen-induce-мотивировать
-beweisen-bewies-hat bewiesen-prove-доказывать
-biegen-bog-ist/hat gebogen-bend/turn-огибать/сгибать
-bieten-bot-hat geboten-offer-предлагать
-binden-band-hat gebunden-bind-связывать
-bitten-bat-hat gebeten-request-просить
-blasen(bläst)-blies-hat geblasen-blow-дуть
-bleiben-blieb-ist geblieben-stay-оставаться
-braten(brät)-briet-hat gebraten-fry-жарить
-brechen(bricht)-brach-hat gebrochen-break-ломать
-brennen-brannte-hat gebrannt-burn-гореть
-bringen-brachte-hat gebracht-bring-приносить
-denken-dachte-hat gedacht-think-думать
-dringen-drang-ist gedrungen-persist-проникать
-empfehlen(empfiehlt)-empfahl-hat empfohlen-recommend-советовать
-erschrecken(erschrickt)-erschrak-ist erschrocken-be startled-испугаться
-essen(isst)-aß-hat gegessen-eat-есть
-fahren(fährt)-fuhr-ist gefahren-drive-ехать
-fallen(fällt)-fiel-ist gefallen-fall-падать
-fangen(fängt)-fing-hat gefangen-catch-ловить
-fechten(ficht)-focht-hat gefochten-fence-фехтовать
-finden-fand-hat gefunden-find-находить
-flechten(flicht)-flocht-hat geflochten-braid/plait-заплетать
-fliegen-flog-ist/hat geflogen-fly-летать
-fliehen-floh-ist geflohen-flee-бежать
-fließen-floss-ist geflossen-flow-течь
-fressen(frisst)-fraß-hat gefressen-eat (of animals)-жрать
-frieren-fror-hat gefroren-freeze-мёрзнуть
-gebären(gebiert)-gebar-hat geboren-give birth-рожать
-geben(gibt)-gab-hat gegeben-give-давать
-gedeihen-gedieh-ist gediehen-thrive-процветать
-gehen-ging-ist gegangen-walk-идти
-gefallen(gefällt)-gefiel-hat gefallen-be pleasing-нравиться
-gelingen-gelang-ist gelungen-succeed-удаваться
-gelten(gilt)-galt-hat gegolten-count/be worth-быть действительным
-genießen-genoss-hat genossen-enjoy-наслаждаться
-geschehen(geschieht)-geschah-ist geschehen-occur-происходить
-gewinnen-gewann-hat gewonnen-win-выиграть
-gießen-goss-hat gegossen-pour-наливать
-gleichen-glich-hat geglichen-resemble-сравнивать
-gleiten-glitt-ist geglitten-glide-скользить
-graben(gräbt)-grub-hat gegraben-dig-копать
-greifen-griff-hat gegriffen-seize-хватать
-haben(hat)-hatte-hat gehabt-have-иметь
-halten(hält)-hielt-hat gehalten-hold-держать
-hängen-hing-hat gehangen-be hanging-висеть
-heben-hob-hat gehoben-lift-поднимать
-heißen-hieß-hat geheißen-be called-называться
-helfen(hilft)-half-hat geholfen-help-помогать
-kennen-kannte-hat gekannt-know-знать
-klingen-klang-hat geklungen-sound-звонить
-kommen-kam-ist gekommen-come-приходить
-kriechen-kroch-ist gekrochen-crawl-ползти
-laden(lädt)-lud-hat geladen-load-грузить
-lassen(lässt)-ließ-hat gelassen-let-оставлять
-laufen(läuft)-lief-ist gelaufen-run-бежать
-leiden-litt-hat gelitten-suffer-сожалеть
-leihen-lieh-hat geliehen-lend-занимать
-lesen(liest)-las-hat gelesen-read-читать
-liegen-lag-hat gelegen-be lying-лежать
-lügen-log-hat gelogen-lie-врать
-mahlen-mahlte-hat gemahlen-grind-красить
-meiden-mied-hat gemieden-avoid-избегать
-melken-molk-hat gemolken-milk-доить
-messen(misst)-maß-hat gemessen-measure-измерять
-misslingen-misslang-ist misslungen-fail-неудаваться
-nehmen(nimmt)-nahm-hat genommen-take-брать
-nennen-nannte-hat genannt-name/call-называть
-pfeifen-pfiff-hat gepfiffen-whistle-свистеть
-preisen-pries-hat gepriesen-praise-прославлять
-raten(rät)-riet-hat geraten-advise-советовать
-reiben-rieb-hat gerieben-rub-тереть
-reißen-riss-ist/hat gerissen-rip/tear-рвать
-reiten-er ritt-ist/hat geritten-ride (a horse)-ездить верхом
-rennen-rannte-ist gerannt-run-бежать
-riechen-roch-hat gerochen-smell-нюхать
-ringen-rang-hat gerungen-wrestle-бороться
-rinnen-rann-ist geronnen-flow/trickle-струиться
-rufen-rief-hat gerufen-call-звать
-salzen-salzte-hat gesalzen-salt-солить
-saugen-sog-hat gesogen-suck-сосать
-schaffen-schuf-hat geschaffen-create-создавать
-scheiden-schied-ist/hat geschieden-separate-расставаться
-scheinen-schien-hat geschienen-shine-казаться
-schieben-schob-hat geschoben-push-толкать
-schießen-schoss-hat geschossen-shoot-стрелять
-schlafen(schläft)-schlief-hat geschlafen-sleep-спать
-schlagen(schlägt)-schlug-hat geschlagen-hit-бить
-schleichen-schlich-ist geschlichen-creep/sneak-красться
-schleifen-schliff-hat geschliffen-grind-шлифовать
-schließen-schloss-hat geschlossen-close-закрывать
-schlingen-schlang-hat geschlungen-wind/wrap-обматывать
-schmelzen(schmilzt)-schmolz-ist/hat geschmolzen-melt-таять
-schneiden-schnitt-hat geschnitten-cut-резать
-schreiben-schrieb-hat geschrieben-write-писать
-schreien-schrie-hat geschrien-scream-кричать
-schreiten-schritt-ist geschritten-stride-ступать
-schweigen-schwieg-hat geschwiegen-be silent-молчать
-schwimmen-schwamm-ist geschwommen-swim-плавать
-schwingen-schwang-ist/hat geschwungen-swing-раскачивать
-schwören-schwor-hat geschworen-swear-клясться
-sehen-sah-hat gesehen-see-видеть
-sein(ist)-war-ist gewesen-be-быть
-senden-sandte-hat gesandt-send-посылать
-singen-sang-hat gesungen-sing-петь
-sinken-sank-ist gesunken-sink-понижаться
-sitzen-saß-hat gesessen-sit-сидеть
-spalten-spaltete-hat gespalten-split-рассечь
-spinnen-spann-hat gesponnen-spin-прясть
-sprechen(spricht)-sprach-hat gesprochen-speak-говорить
-springen-sprang-ist gesprungen-jump-прыгать
-steсhen(sticht)-stach-hat gestochen-prick/sting-колоть
-stehen-stand-hat gestanden-stand-стоять
-stehlen(stiehlt)-stahl-hat gestohlen-steal-красть
-steigen-stieg-ist gestiegen-climb-подниматься
-sterben(stirbt)-starb-ist gestorben-die-умирать
-stinken-stank-hat gestunken-stink-вонять
-stoßen(stößt)-stieß-ist/hat geschtoßen-push-пихать
-streichen-strich-hat gestrichen-stroke-гладить/красить
-streiten-stritt-hat gestritten-quarrel-спорить
-tragen(trägt)-trug-hat getragen-wear/carry-носить
-treffen(trifft)-traf-hat getroffen-meet-встретить
-treiben-trieb-ist/hat getrieben-drive/drift-заниматься
-treten(tritt)-trat-hat getreten-step-наступать
-trinken-trank-hat getrunken-drink-пить
-trügen-trog-hat getrogen-deceive-обманывать
-tun(tut)-tat-hat getan-do-делать
-verbieten-verbot-hat verboten-forbid-запрещать
-verderben(verdirbt)-verdarb-ist/hat verdorben-ruin-портить/гнить
-vergessen(vergisst)-vergaß-hat vergessen-forget-забыть
-verlassen(verlässt)-verließ-hat verlassen-leave-оставлять
-verlieren-verlor-hat verloren-lose-потерять
-verschweigen-verschwieg-hat verschwiegen-conceal-скрывать
-verschwinden-verschwand-ist verschwunden-disappear-исчезать
-verzeihen-verzieh-hat verziehen-excuse-извиняться
-wachsen(wächst)-wuchs-ist gewachsen-grow-расти
-waschen(wäscht)-wusch-hat gewaschen-wash-мыть
-weichen-wich-ist gewichen-yield/give way-смягчаться
-weisen-wies-hat gewiesen-point-указывать
-wenden-wandte-hat gewandt-turn-поворачивать
-werben(wirbt)-warb-hat geworben-advertise-рекламировать
-werden(wird)-wurde-ist geworden-become-становиться
-werfen(wirft)-warf-hat geworfen-throw-бросать
-wiegen-wog-hat gewogen-weigh-взвешивать
-winden-wand-hat gewunden-wind-мотать
-wissen(weiß)-wusste-hat gewusst-know-знать
-ziehen-zog-hat gezogen-pull-тянуть
-zwingen-zwang-hat gezwungen-force-заставлять
+backen(bäckt)-backte-hat gebacken-to bake-печь
+befehlen(befiehlt)-befahl-hat befohlen-to command-приказывать
+beginnen-begann-hat begonnen-to begin-начинать
+beißen-biss-hat gebissen-to bite-кусать
+bekommen-bekam-hat bekommen-to get-получать
+bergen(birgt)-barg-hat geborgen-to salvage-спасать
+betrügen-betrog-hat betrogen-to deceive-лгать
+bewegen-bewog-hat bewogen-to induce-мотивировать
+beweisen-bewies-hat bewiesen-to prove-доказывать
+biegen-bog-ist/hat gebogen-to bend/turn-огибать/сгибать
+bieten-bot-hat geboten-to offer-предлагать
+binden-band-hat gebunden-to bind-связывать
+bitten-bat-hat gebeten-to request-просить
+blasen(bläst)-blies-hat geblasen-to blow-дуть
+bleiben-blieb-ist geblieben-to stay-оставаться
+braten(brät)-briet-hat gebraten-to fry-жарить
+brechen(bricht)-brach-hat gebrochen-to break-ломать
+brennen-brannte-hat gebrannt-to burn-гореть
+bringen-brachte-hat gebracht-to bring-приносить
+denken-dachte-hat gedacht-to think-думать
+dringen-drang-ist gedrungen-to persist-проникать
+empfehlen(empfiehlt)-empfahl-hat empfohlen-to recommend-советовать
+erschrecken(erschrickt)-erschrak-ist erschrocken-to be startled-испугаться
+essen(isst)-aß-hat gegessen-to eat-есть
+fahren(fährt)-fuhr-ist gefahren-to drive-ехать
+fallen(fällt)-fiel-ist gefallen-to fall-падать
+fangen(fängt)-fing-hat gefangen-to catch-ловить
+fechten(ficht)-focht-hat gefochten-to fence-фехтовать
+finden-fand-hat gefunden-to find-находить
+flechten(flicht)-flocht-hat geflochten-to braid/plait-заплетать
+fliegen-flog-ist/hat geflogen-to fly-летать
+fliehen-floh-ist geflohen-to flee-бежать
+fließen-floss-ist geflossen-toflow-течь
+fressen(frisst)-fraß-hat gefressen-to eat (of animals)-жрать
+frieren-fror-hat gefroren-to freeze-мёрзнуть
+gebären(gebiert)-gebar-hat geboren-to give birth-рожать
+geben(gibt)-gab-hat gegeben-to give-давать
+gedeihen-gedieh-ist gediehen-to thrive-процветать
+gehen-ging-ist gegangen-to walk-идти
+gefallen(gefällt)-gefiel-hat gefallen-to be pleasing-нравиться
+gelingen-gelang-ist gelungen-to succeed-удаваться
+gelten(gilt)-galt-hat gegolten-to count/be worth-быть действительным
+genießen-genoss-hat genossen-to enjoy-наслаждаться
+geschehen(geschieht)-geschah-ist geschehen-to occur-происходить
+gewinnen-gewann-hat gewonnen-to win-выиграть
+gießen-goss-hat gegossen-to pour-наливать
+gleichen-glich-hat geglichen-to resemble-сравнивать
+gleiten-glitt-ist geglitten-to glide-скользить
+graben(gräbt)-grub-hat gegraben-to dig-копать
+greifen-griff-hat gegriffen-to seize-хватать
+haben(hat)-hatte-hat gehabt-to have-иметь
+halten(hält)-hielt-hat gehalten-to hold-держать
+hängen-hing-hat gehangen-to be hanging-висеть
+heben-hob-hat gehoben-to lift-поднимать
+heißen-hieß-hat geheißen-to be called-называться
+helfen(hilft)-half-hat geholfen-to help-помогать
+kennen-kannte-hat gekannt-to know-знать
+klingen-klang-hat geklungen-to sound-звонить
+kommen-kam-ist gekommen-to come-приходить
+kriechen-kroch-ist gekrochen-to crawl-ползти
+laden(lädt)-lud-hat geladen-to load-грузить
+lassen(lässt)-ließ-hat gelassen-to let-оставлять
+laufen(läuft)-lief-ist gelaufen-to run-бежать
+leiden-litt-hat gelitten-to suffer-сожалеть
+leihen-lieh-hat geliehen-to lend-занимать
+lesen(liest)-las-hat gelesen-to read-читать
+liegen-lag-hat gelegen-to be lying-лежать
+lügen-log-hat gelogen-to lie-врать
+mahlen-mahlte-hat gemahlen-to grind-красить
+meiden-mied-hat gemieden-to avoid-избегать
+melken-molk-hat gemolken-to milk-доить
+messen(misst)-maß-hat gemessen-to measure-измерять
+misslingen-misslang-ist misslungen-to fail-неудаваться
+nehmen(nimmt)-nahm-hat genommen-to take-брать
+nennen-nannte-hat genannt-to name/call-называть
+pfeifen-pfiff-hat gepfiffen-to whistle-свистеть
+preisen-pries-hat gepriesen-to praise-прославлять
+raten(rät)-riet-hat geraten-to advise-советовать
+reiben-rieb-hat gerieben-to rub-тереть
+reißen-riss-ist/hat gerissen-to rip/tear-рвать
+reiten-er ritt-ist/hat geritten-to ride (a horse)-ездить верхом
+rennen-rannte-ist gerannt-to run-бежать
+riechen-roch-hat gerochen-to smell-нюхать
+ringen-rang-hat gerungen-to wrestle-бороться
+rinnen-rann-ist geronnen-to flow/trickle-струиться
+rufen-rief-hat gerufen-to call-звать
+salzen-salzte-hat gesalzen-to salt-солить
+saugen-sog-hat gesogen-to suck-сосать
+schaffen-schuf-hat geschaffen-to create-создавать
+scheiden-schied-ist/hat geschieden-to separate-расставаться
+scheinen-schien-hat geschienen-to shine-казаться
+schieben-schob-hat geschoben-to push-толкать
+schießen-schoss-hat geschossen-to shoot-стрелять
+schlafen(schläft)-schlief-hat geschlafen-to sleep-спать
+schlagen(schlägt)-schlug-hat geschlagen-to hit-бить
+schleichen-schlich-ist geschlichen-to creep/sneak-красться
+schleifen-schliff-hat geschliffen-to grind-шлифовать
+schließen-schloss-hat geschlossen-to close-закрывать
+schlingen-schlang-hat geschlungen-to wind/wrap-обматывать
+schmelzen(schmilzt)-schmolz-ist/hat geschmolzen-to melt-таять
+schneiden-schnitt-hat geschnitten-to cut-резать
+schreiben-schrieb-hat geschrieben-to write-писать
+schreien-schrie-hat geschrien-to scream-кричать
+schreiten-schritt-ist geschritten-to stride-ступать
+schweigen-schwieg-hat geschwiegen-to be silent-молчать
+schwimmen-schwamm-ist geschwommen-to swim-плавать
+schwingen-schwang-ist/hat geschwungen-to swing-раскачивать
+schwören-schwor-hat geschworen-to swear-клясться
+sehen-sah-hat gesehen-to see-видеть
+sein(ist)-war-ist gewesen-to be-быть
+senden-sandte-hat gesandt-to send-посылать
+singen-sang-hat gesungen-to sing-петь
+sinken-sank-ist gesunken-to sink-понижаться
+sitzen-saß-hat gesessen-to sit-сидеть
+spalten-spaltete-hat gespalten-to split-рассечь
+spinnen-spann-hat gesponnen-to spin-прясть
+sprechen(spricht)-sprach-hat gesprochen-to speak-говорить
+springen-sprang-ist gesprungen-to jump-прыгать
+steсhen(sticht)-stach-hat gestochen-to prick/sting-колоть
+stehen-stand-hat gestanden-to stand-стоять
+stehlen(stiehlt)-stahl-hat gestohlen-to steal-красть
+steigen-stieg-ist gestiegen-to climb-подниматься
+sterben(stirbt)-starb-ist gestorben-to die-умирать
+stinken-stank-hat gestunken-to stink-вонять
+stoßen(stößt)-stieß-ist/hat geschtoßen-to push-пихать
+streichen-strich-hat gestrichen-to stroke-гладить/красить
+streiten-stritt-hat gestritten-to quarrel-спорить
+tragen(trägt)-trug-hat getragen-to wear/carry-носить
+treffen(trifft)-traf-hat getroffen-to meet-встретить
+treiben-trieb-ist/hat getrieben-to drive/drift-заниматься
+treten(tritt)-trat-hat getreten-to step-наступать
+trinken-trank-hat getrunken-to drink-пить
+trügen-trog-hat getrogen-to deceive-обманывать
+tun(tut)-tat-hat getan-to do-делать
+verbieten-verbot-hat verboten-to forbid-запрещать
+verderben(verdirbt)-verdarb-ist/hat verdorben-to ruin-портить/гнить
+vergessen(vergisst)-vergaß-hat vergessen-to forget-забыть
+verlassen(verlässt)-verließ-hat verlassen-to leave-оставлять
+verlieren-verlor-hat verloren-to lose-потерять
+verschweigen-verschwieg-hat verschwiegen-to conceal-скрывать
+verschwinden-verschwand-ist verschwunden-to disappear-исчезать
+verzeihen-verzieh-hat verziehen-to excuse-извиняться
+wachsen(wächst)-wuchs-ist gewachsen-to grow-расти
+waschen(wäscht)-wusch-hat gewaschen-to wash-мыть
+weichen-wich-ist gewichen-to yield/give way-смягчаться
+weisen-wies-hat gewiesen-to point-указывать
+wenden-wandte-hat gewandt-to turn-поворачивать
+werben(wirbt)-warb-hat geworben-to advertise-рекламировать
+werden(wird)-wurde-ist geworden-to become-становиться
+werfen(wirft)-warf-hat geworfen-to throw-бросать
+wiegen-wog-hat gewogen-to weigh-взвешивать
+winden-wand-hat gewunden-to wind-мотать
+wissen(weiß)-wusste-hat gewusst-to know-знать
+ziehen-zog-hat gezogen-to pull-тянуть
+zwingen-zwang-hat gezwungen-to force-заставлять

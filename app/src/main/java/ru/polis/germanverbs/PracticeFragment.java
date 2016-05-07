@@ -1,5 +1,6 @@
 package ru.polis.germanverbs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import ru.polis.germanverbs.games.CardsGameActivity;
+
 /**
  * Fragment to show all type of Practices (Games)
  *
@@ -17,14 +20,6 @@ import android.widget.Toast;
  */
 public class PracticeFragment extends Fragment{
     public static final String LOG_TAG = "PracticeFragment";
-    private static PracticeFragment instanse;
-
-    public static Fragment getInstance() {
-        if(instanse == null){
-            instanse = new PracticeFragment();
-        }
-        return instanse;
-    }
 
     public static Fragment getNewInstance() {
         Log.i(LOG_TAG, "getNewInstance");
@@ -40,7 +35,7 @@ public class PracticeFragment extends Fragment{
         //Add listener to CardViews and InfoButtons
         GameOnClickListener onClickListener = new GameOnClickListener();
 
-        CardView viewGame1 = (CardView) view.findViewById(R.id.card_view_game_1);
+        CardView viewGame1 = (CardView) view.findViewById(R.id.cards_game_view);
         CardView viewGame2 = (CardView) view.findViewById(R.id.card_view_game_2);
         CardView viewGame3 = (CardView) view.findViewById(R.id.card_view_game_3);
         CardView viewGame4 = (CardView) view.findViewById(R.id.card_view_game_4);
@@ -67,8 +62,9 @@ public class PracticeFragment extends Fragment{
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.card_view_game_1:
-                    Toast.makeText(getContext(), "Game 1", Toast.LENGTH_SHORT).show();
+                case R.id.cards_game_view:
+                    Intent intent = new Intent(getActivity(), CardsGameActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.card_view_game_2:
                     Toast.makeText(getContext(), "Game 2", Toast.LENGTH_SHORT).show();

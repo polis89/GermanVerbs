@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.roughike:bottom-bar:1.2.6'
+    compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 }

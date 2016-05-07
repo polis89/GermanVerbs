@@ -10,4 +10,5 @@
     <string name="cancel">Cancel</string>
     <string name="OK">OK</string>
     <string name="action_search">Search</string>
+    <string name="cards_game_activity_name">Cards game</string>
 </resources>

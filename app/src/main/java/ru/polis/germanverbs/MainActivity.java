@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF = "prefs"; //имя SharedPrefs
     public static final String SHARED_PREF_LANGUAGE_TAG = "language"; //Переменная языка в SharedPrefs - возвращает по-типу Locale
     public static final String SHARED_PREF_FIRST_LAUNCH_TAG = "first_launch"; //Переменная для определения первого запуска в SharedPrefs
+    public static final String SHARED_PREF_CARDS_GAME_WORD_COUNT = "cards_game_word_count"; //Переменная для определения первого запуска в SharedPrefs
 
-    private Language language;
+    public Language language;
     private BottomBar bottomBar;
+    private MenuItem searchMenuItem;
 
     private  VerbsFragment verbsFragment;
     private boolean firstStart = false;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i(LOG_TAG, "LangString = " + langString);
             language = Language.getLanguageByLocale(langString);
         }
+
+        //Развертка layout
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -100,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 bottomBar.selectTabAtPosition(position, true);
+                if(position == 1){
+                    searchMenuItem.setVisible(true);
+                }else{
+                    searchMenuItem.setVisible(false);
+                }
             }
 
             @Override
@@ -169,6 +178,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor edit = getSharedPreferences(SHARED_PREF, MODE_PRIVATE).edit();
         //Запись языка в SP
         edit.putString(SHARED_PREF_LANGUAGE_TAG, langLocale);
+        //Запись в SharedPrefs настроек по-умолчанию
+        edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, 20);
         //Запись в SharedPrefs что первый старт уже был
         edit.putBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, false).apply();
     }
@@ -222,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem languageMenuItem = menu.getItem(1);
         languageMenuItem.setIcon(language.getImageResID());
+        searchMenuItem = menu.getItem(0);
         return true;
     }
 
