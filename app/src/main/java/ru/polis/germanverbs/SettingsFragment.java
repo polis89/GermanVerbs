@@ -12,24 +12,14 @@ import android.view.ViewGroup;
  * Created by Dmitrii Polianskii on 24.04.2016.
  */
 public class SettingsFragment extends Fragment {
-    private static SettingsFragment instanse;
-
-    public static Fragment getInstance() {
-        if(instanse == null){
-            instanse = new SettingsFragment();
-        }
-        return instanse;
-    }
 
     public static Fragment getNewInstance() {
         return new SettingsFragment();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 }

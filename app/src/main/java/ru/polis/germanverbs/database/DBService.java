@@ -8,8 +8,11 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
 
 import ru.polis.germanverbs.enums.Language;
+import ru.polis.germanverbs.objects.Verb;
 
 /**
  * Service to connect with DB
@@ -49,7 +52,6 @@ public class DBService {
                 //Если есть 3 форма инфинитив
                 if(line[0].contains("(")){
                     String[] tempValues = line[0].split("[\\(\\)]");
-                    Log.i(LOG_TAG, "Temp = " + Arrays.toString(tempValues));
                     contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE, tempValues[0]);
                     contentValues.put(DBHelper.TABLE_WORD_KEY_INFINITIVE_3PERSON, tempValues[1]);
 
@@ -62,11 +64,25 @@ public class DBService {
                 contentValues.put(DBHelper.TABLE_WORD_KEY_IS_ACTIVE, 1);
 
                 //Add translates to CV
-                contentValues.put(Language.ENG.getNameForDB(), line[3]);
-                contentValues.put(Language.RUS.getNameForDB(), line[4]);
+                contentValues.put(Language.ENG.getNameForDB(), line[9]);
+                contentValues.put(Language.RUS.getNameForDB(), line[10]);
 
-                //Write in DB
-                writableDatabase.insert(DBHelper.TABLE_WORD_NAME, null, contentValues);
+                //Write in table WORD
+                long word_id = writableDatabase.insert(DBHelper.TABLE_WORD_NAME, null, contentValues);
+
+                //Add wrongAnswers to DB
+                contentValues = new ContentValues();
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_WORD_ID, word_id);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PRATERITUM1, line[3]);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PRATERITUM2, line[4]);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PRATERITUM3, line[5]);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PERFEKT1, line[6]);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PERFEKT2, line[7]);
+                contentValues.put(DBHelper.TABLE_MISTAKE_KEY_PERFEKT3, line[8]);
+
+                //Write in table MISTAKES
+                writableDatabase.insert(DBHelper.TABLE_MISTAKE_NAME, null, contentValues);
+
                 Log.i(LOG_TAG, "Insert word in DB: " + Arrays.toString(line));
             }
         }
@@ -75,15 +91,75 @@ public class DBService {
         dbHelper.close();
     }
 
-    public SQLiteDatabase getReadableDatabase(Context context) {
-        if(dbHelper == null){
-            Log.i(LOG_TAG, "New dbHelper");
-            dbHelper = new DBHelper(context);
-        }
-        return dbHelper.getReadableDatabase();
-    }
-
     public DBHelper getDBHelper() {
         return dbHelper;
+    }
+
+    public Verb[] getRandomVerbs(int verbCount, Language language) throws NotEnoghtVerbsException {
+        Verb[] verbs = new Verb[verbCount];
+        Cursor cursor = dbHelper.getReadableDatabase().
+                rawQuery("SELECT " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_ID + ", "
+                        + DBHelper.TABLE_WORD_KEY_INFINITIVE + ", " +
+                        DBHelper.TABLE_WORD_KEY_INFINITIVE_3PERSON + ", " +
+                        DBHelper.TABLE_WORD_KEY_PRATERITUM + ", " +
+                        DBHelper.TABLE_WORD_KEY_PERFEKT + ", " +
+                        language.getNameForDB() + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM1 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM2 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM3 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT1 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT2 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT3 +
+                        " FROM " + DBHelper.TABLE_WORD_NAME +
+                        " INNER JOIN " + DBHelper.TABLE_MISTAKE_NAME +
+                        " ON " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_ID + " = " + DBHelper.TABLE_MISTAKE_NAME + "." + DBHelper.TABLE_MISTAKE_KEY_WORD_ID +
+                        " WHERE " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_IS_ACTIVE + " = 1", null);
+        int countAllVerbs = cursor.getCount();
+        if(countAllVerbs < verbCount) throw new NotEnoghtVerbsException();
+        Random random = new Random(System.currentTimeMillis());
+        HashSet<Integer> setRandomInt = new HashSet<>();
+        while(true){
+            setRandomInt.add(random.nextInt(countAllVerbs));
+            if(setRandomInt.size() == verbCount){break;}
+        }
+        int index = 0;
+        for(int i : setRandomInt){
+            cursor.moveToPosition(i);
+            int id = cursor.getInt(0);
+            String infinitive = cursor.getString(1);
+            String infinitive_3_person = cursor.getString(2);
+            String prateritum = cursor.getString(3);
+            String perfekt = cursor.getString(4);
+            String translate = cursor.getString(5);
+            String prat_miss_1 = cursor.getString(6);
+            String prat_miss_2 = cursor.getString(7);
+            String prat_miss_3 = cursor.getString(8);
+            String perf_miss_1 = cursor.getString(9);
+            String perf_miss_2 = cursor.getString(10);
+            String perf_miss_3 = cursor.getString(11);
+            Verb verb = new Verb(id, infinitive, infinitive_3_person, prateritum, perfekt, translate, prat_miss_1, prat_miss_2, prat_miss_3, perf_miss_1, perf_miss_2, perf_miss_3);
+            verbs[index] = verb;
+            index++;
+            Log.i(LOG_TAG, "Add Random Verb = " + verb.toString());
+        }
+        return verbs;
+    }
+
+    public void changeIsActive(int verb_id) {
+        SQLiteDatabase writableDatabase = dbHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("SELECT " + DBHelper.TABLE_WORD_KEY_IS_ACTIVE +
+                " FROM " + DBHelper.TABLE_WORD_NAME +
+                " WHERE " + DBHelper.TABLE_WORD_KEY_ID + " = " + verb_id, null);
+        cursor.moveToFirst();
+        int isActiveInt = cursor.getInt(0);
+        int newIsActiveInt = isActiveInt == 1 ? 0 : 1;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBHelper.TABLE_WORD_KEY_IS_ACTIVE, newIsActiveInt);
+        writableDatabase.update(DBHelper.TABLE_WORD_NAME, contentValues, DBHelper.TABLE_WORD_KEY_ID + " = " +verb_id, null);
+        cursor.close();
+        writableDatabase.close();
+    }
+
+    public class NotEnoghtVerbsException extends Exception {
     }
 }

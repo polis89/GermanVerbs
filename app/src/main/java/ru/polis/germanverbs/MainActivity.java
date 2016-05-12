@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF = "prefs"; //имя SharedPrefs
     public static final String SHARED_PREF_LANGUAGE_TAG = "language"; //Переменная языка в SharedPrefs - возвращает по-типу Locale
     public static final String SHARED_PREF_FIRST_LAUNCH_TAG = "first_launch"; //Переменная для определения первого запуска в SharedPrefs
-    public static final String SHARED_PREF_CARDS_GAME_WORD_COUNT = "cards_game_word_count"; //Переменная для определения первого запуска в SharedPrefs
+    public static final String SHARED_PREF_CARDS_GAME_WORD_COUNT = "cards_game_word_count"; //Количество слов для изучения в игре-карточки
 
     public Language language;
     private BottomBar bottomBar;
     private MenuItem searchMenuItem;
 
     private  VerbsFragment verbsFragment;
-    private boolean firstStart = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Проверка на первый запуск
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
-        firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
+        boolean firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
         //Init verbsFragment
         verbsFragment = (VerbsFragment) VerbsFragment.getNewInstance();
 
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             firstStart(); //Первый Запуск
         } else {
             String langString = sharedPreferences.getString(SHARED_PREF_LANGUAGE_TAG, "en");
-            Log.i(LOG_TAG, "LangString = " + langString);
+            Log.i(LOG_TAG, "Lang = " + langString);
             language = Language.getLanguageByLocale(langString);
         }
 

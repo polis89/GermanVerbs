@@ -3,6 +3,7 @@ package ru.polis.germanverbs;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.CursorAdapter;
@@ -24,7 +25,7 @@ import ru.polis.germanverbs.enums.Language;
  *
  * Created by Dmitrii Polianskii on 24.04.2016.
  */
-public class VerbsFragment extends ListFragment {
+public class VerbsFragment extends ListFragment{
     private static final String LOG_TAG = "ListFragment";
     private Language language;
 
@@ -83,6 +84,45 @@ public class VerbsFragment extends ListFragment {
             String description = infinitive + " - " + prat + " - " + perfect;
             verbDescription.setText(description);
             roundCornerProgressBar.setProgress(progress);
+
+            int verb_id = cursor.getInt(0);
+            checkBox.setOnClickListener(new OnCheckBoxTouchListener(verb_id));
+        }
+
+        private class OnCheckBoxTouchListener implements View.OnClickListener {
+            private int verb_id;
+
+            public OnCheckBoxTouchListener(int position) {
+                this.verb_id = position;
+            }
+
+            @Override
+            public void onClick(View v) {
+                new ChangeIsActiveAsyncTask(DBService.getInstance(getActivity()), verb_id).execute();
+            }
+        }
+
+        //Класс для изменения isActive в БД в паралельном потоке
+        private class ChangeIsActiveAsyncTask extends AsyncTask<Void, Void, Void> {
+            private DBService dbService;
+            private int verb_id; //Id глагола в БД
+
+            public ChangeIsActiveAsyncTask(DBService dbService, int verb_id) {
+                this.dbService = dbService;
+                this.verb_id = verb_id;
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                dbService.changeIsActive(verb_id);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                SQLiteDatabase writableDatabase = DBService.getInstance(getActivity()).getDBHelper().getReadableDatabase();
+                changeCursor(writableDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null));
+            }
         }
     }
 }
