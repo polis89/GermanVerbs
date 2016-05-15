@@ -24,7 +24,7 @@ import ru.polis.germanverbs.objects.Verb;
  */
 public class PracticeFragment extends Fragment{
     public static final String LOG_TAG = "PracticeFragment";
-    private static final String RANDOM_VERB_INTENT_EXTRA = "random_verbs";
+    public static final String RANDOM_VERB_INTENT_EXTRA = "random_verbs";
 
     public static Fragment getNewInstance() {
         Log.i(LOG_TAG, "getNewInstance");
