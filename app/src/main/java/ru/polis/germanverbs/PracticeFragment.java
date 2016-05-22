@@ -41,12 +41,12 @@ public class PracticeFragment extends Fragment{
         GameOnClickListener onClickListener = new GameOnClickListener();
 
         CardView viewGame1 = (CardView) view.findViewById(R.id.cards_game_view);
-        CardView viewGame2 = (CardView) view.findViewById(R.id.card_view_game_2);
+        CardView viewGame2 = (CardView) view.findViewById(R.id.card_view_true_false_game);
         CardView viewGame3 = (CardView) view.findViewById(R.id.card_view_game_3);
         CardView viewGame4 = (CardView) view.findViewById(R.id.card_view_game_4);
 
-        ImageView infoView1 = (ImageView) view.findViewById(R.id.help_game_1);
-        ImageView infoView2 = (ImageView) view.findViewById(R.id.help_game_2);
+        ImageView infoView1 = (ImageView) view.findViewById(R.id.help_cards_game);
+        ImageView infoView2 = (ImageView) view.findViewById(R.id.help_true_false_game);
         ImageView infoView3 = (ImageView) view.findViewById(R.id.help_game_3);
         ImageView infoView4 = (ImageView) view.findViewById(R.id.help_game_4);
 
@@ -82,7 +82,7 @@ public class PracticeFragment extends Fragment{
                         Toast.makeText(activity, getString(R.string.not_enought_verb_message), Toast.LENGTH_SHORT).show();
                     }
                     break;
-                case R.id.card_view_game_2:
+                case R.id.card_view_true_false_game:
                     Toast.makeText(getContext(), "Game 2", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.card_view_game_3:
@@ -91,10 +91,10 @@ public class PracticeFragment extends Fragment{
                 case R.id.card_view_game_4:
                     Toast.makeText(getContext(), "Game 4", Toast.LENGTH_SHORT).show();
                     break;
-                case R.id.help_game_1:
+                case R.id.help_cards_game:
                     Toast.makeText(getContext(), "Info Game 1", Toast.LENGTH_SHORT).show();
                     break;
-                case R.id.help_game_2:
+                case R.id.help_true_false_game:
                     Toast.makeText(getContext(), "Info Game 2", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.help_game_3:

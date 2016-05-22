@@ -33,7 +33,7 @@
             android:layout_height="0dp"
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_gravity="center"
-            android:layout_weight="3"
+            android:layout_weight="2"
             card_view:cardCornerRadius="4dp"
             android:layout_margin="2dp">
 
@@ -46,16 +46,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="to bake"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/text_marg"
                     android:id="@+id/translate_text_view"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="baken"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_gravity="center"
                     android:id="@+id/verb_formen"/>
@@ -67,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -114,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="1">
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_gravity="center"

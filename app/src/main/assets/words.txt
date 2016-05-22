@@ -22,7 +22,7 @@ dringen-drang-ist gedrungen-dring-drangte-dringte-gedrungt-gedringen-gedringt-to
 empfehlen(empfiehlt)-empfahl-hat empfohlen-empfohl-empfiehl-empfill-empfohlt-empfiehlen-empfiehlt-to recommend-советовать
 erschrecken(erschrickt)-erschrak-ist erschrocken-erschrok-erschrick-erschruk-erschricken-erschrecken-erschracken-to be startled-испугаться
 essen(isst)-aß-hat gegessen-ess-iß-ass-gegossen-gegießen-gegesst-to eat-есть
-fahren(fährt)-fuhr-ist gefahren-fahr-fuhrte-fahrte-gefahrt-gefuhren-gefuhrt-to drive-ехать
+fahren(fährt)-fuhr-ist/hat gefahren-fahr-fuhrte-fahrte-gefahrt-gefuhren-gefuhrt-to drive-ехать
 fallen(fällt)-fiel-ist gefallen-fall-fahl-foll-gefiehl-gefahl-gefahllen-to fall-падать
 fangen(fängt)-fing-hat gefangen-fingte-fangte-fang-gefingen-gefangt-gefingt-to catch-ловить
 fechten(ficht)-focht-hat gefochten-ficht-fucht-fechte-gefichten-gefocht-gefechten-to fence-фехтовать
