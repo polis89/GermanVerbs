@@ -24,6 +24,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".games.ResultActivity"
+            android:label="@string/result_activity_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
+
     </application>
 
 </manifest>

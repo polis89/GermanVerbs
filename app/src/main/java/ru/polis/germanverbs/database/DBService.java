@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 import ru.polis.germanverbs.enums.Language;
+import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
 
 /**
@@ -157,6 +158,29 @@ public class DBService {
         contentValues.put(DBHelper.TABLE_WORD_KEY_IS_ACTIVE, newIsActiveInt);
         writableDatabase.update(DBHelper.TABLE_WORD_NAME, contentValues, DBHelper.TABLE_WORD_KEY_ID + " = " +verb_id, null);
         cursor.close();
+        writableDatabase.close();
+    }
+
+    public void changeProgress(Verb[] verbs, Result[] results) {
+        SQLiteDatabase writableDatabase = dbHelper.getWritableDatabase();
+        for(int i = 0; i < verbs.length; i++) {
+            Cursor cursor = writableDatabase.rawQuery("SELECT " + DBHelper.TABLE_WORD_KEY_PROGRESS +
+                    " FROM " + DBHelper.TABLE_WORD_NAME +
+                    " WHERE " + DBHelper.TABLE_WORD_KEY_ID + " = " + verbs[i].getId(), null);
+            cursor.moveToFirst();
+            int progress = cursor.getInt(0);
+            int newProgress = progress + results[i].getProgress();
+            if(newProgress > 100) { //Отмена изучения глагола при достижении более 100 процентов
+                newProgress = 100;
+                changeIsActive(verbs[i].getId());
+                writableDatabase = dbHelper.getWritableDatabase();
+            }
+            if(newProgress < 0) newProgress = 0;
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(DBHelper.TABLE_WORD_KEY_PROGRESS, newProgress);
+            writableDatabase.update(DBHelper.TABLE_WORD_NAME, contentValues, DBHelper.TABLE_WORD_KEY_ID + " = " + verbs[i].getId(), null);
+            cursor.close();
+        }
         writableDatabase.close();
     }
 

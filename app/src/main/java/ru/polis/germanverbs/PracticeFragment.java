@@ -71,7 +71,7 @@ public class PracticeFragment extends Fragment{
                     FragmentActivity activity = getActivity();
                     Intent intent = new Intent(activity, CardsGameActivity.class);
                     int verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
-                            .getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 20);
+                            .getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
                     DBService dbService = DBService.getInstance(activity);
                     Verb[] randomVerbs;
                     try {

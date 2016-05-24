@@ -1,5 +1,6 @@
 package ru.polis.germanverbs.games;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -16,6 +17,7 @@ import java.util.Random;
 
 import ru.polis.germanverbs.PracticeFragment;
 import ru.polis.germanverbs.R;
+import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
 
 /**
@@ -24,10 +26,13 @@ import ru.polis.germanverbs.objects.Verb;
  */
 public class CardsGameActivity extends AppCompatActivity{
     public static final String LOG_TAG = "CardsGameActivity";
+    private static final int TRUE_ANSWER_PROGRESS = 5; //Очки прогресса за правильный ответ
+    private static final int FALSE_ANSWER_PROGRESS = -5; //Очки прогресса за не правильный ответ
 
     private Verb[] verbs; //Все глаголы для изучения
+    private Result[] results; //Результаты изучения глагола
     private int presentVerbNum; //номер текущего глагола
-    private int presentPart; //Текущий этап (0 - инфинитив, 1 - претеритум, 2 - has/ist, 3 - перфект)
+    private int presentPart; //Текущий этап (0 - инфинитив, 1 - претеритум, 2 - has/ist, 3 - перфект, 4 - если все глаголы повторены)
 
     private TextView translateTextView;
     private TextView verbFormsTextView;
@@ -55,8 +60,10 @@ public class CardsGameActivity extends AppCompatActivity{
         //Достаем глаголы из интента
         Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
         verbs = new Verb[parcelableArrayExtra.length];
+        results = new Result[parcelableArrayExtra.length];
         for (int i = 0; i < parcelableArrayExtra.length; i++){
             verbs[i] = (Verb) parcelableArrayExtra[i];
+            results[i] = new Result();
         }
 
         //Перемешивание глаголов
@@ -99,29 +106,37 @@ public class CardsGameActivity extends AppCompatActivity{
 
     //Показать следующий глагол
     private void startVerb() {
-        if(presentVerbNum == verbs.length - 1){
+        if(presentVerbNum != verbs.length){ //Проверка есть ли еще глаголы
+            int colorWhite = getResources().getColor(R.color.colorTextOrIcons); //Бедый цвет для не нажатых вариантов
+            var1CardView.setCardBackgroundColor(colorWhite);
+            var2CardView.setCardBackgroundColor(colorWhite);
+            var3CardView.setCardBackgroundColor(colorWhite);
+            var4CardView.setCardBackgroundColor(colorWhite);
+
+            translateTextView.setText(verbs[presentVerbNum].getTranslate());
+            verbFormsTextView.setText("");
+
+            //Генерация выриантов ответов
+            String[] variants = getInfinitiveVariants();
+
+            //Отображение вариантов в Layout
+            var1TextView.setText(variants[0]);
+            var2TextView.setText(variants[1]);
+            var3TextView.setText(variants[2]);
+            var4TextView.setText(variants[3]);
+
+            //Отметка текущего этапа
+            presentPart = 0;
+        } else {
+            presentPart++;
+
             //Старт активити с результатом
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
+            intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
+            startActivity(intent);
+            finish();
         }
-        int colorWhite = getResources().getColor(R.color.colorTextOrIcons); //Бедый цвет для не нажатых вариантов
-        var1CardView.setCardBackgroundColor(colorWhite);
-        var2CardView.setCardBackgroundColor(colorWhite);
-        var3CardView.setCardBackgroundColor(colorWhite);
-        var4CardView.setCardBackgroundColor(colorWhite);
-
-        translateTextView.setText(verbs[presentVerbNum].getTranslate());
-        verbFormsTextView.setText("");
-
-        //Генерация выриантов ответов
-        String[] variants = getInfinitiveVariants();
-
-        //Отображение вариантов в Layout
-        var1TextView.setText(variants[0]);
-        var2TextView.setText(variants[1]);
-        var3TextView.setText(variants[2]);
-        var4TextView.setText(variants[3]);
-
-        //Отметка текущего этапа
-        presentPart = 0;
     }
 
     //Показать следущий этап (Для нового глагола - startVerb)
@@ -245,11 +260,16 @@ public class CardsGameActivity extends AppCompatActivity{
                 default:
                     throw new UnsupportedOperationException();
             }
+            if(presentPart == 4) {
+                return; //Срабатывает если все глаголы повторены
+            }
             boolean result = checkResult(answer.getText().toString());
             CardView cardAnswerView = (CardView) v;
             if (result) {
+                results[presentVerbNum].addTrueAnswer();
+                results[presentVerbNum].addProgress(TRUE_ANSWER_PROGRESS);
                 cardAnswerView.setCardBackgroundColor(getResources().getColor(R.color.colorTrueAnswer));
-                if(presentPart == 3){
+                if(presentPart == 3){ //Перед переходом к следующему глаголу показывает правильное спряжение
                     verbFormsTextView.setText(verbs[presentVerbNum].getInfinitive() + " - "
                             + verbs[presentVerbNum].getPrateritum() + " - "
                             + verbs[presentVerbNum].getPerfekt().split(" ")[0] + " "
@@ -263,6 +283,8 @@ public class CardsGameActivity extends AppCompatActivity{
                     }
                 }, 500);
             } else {
+                results[presentVerbNum].addFalseAnswer();
+                results[presentVerbNum].addProgress(FALSE_ANSWER_PROGRESS);
                 cardAnswerView.setCardBackgroundColor(getResources().getColor(R.color.colorFalseAnswer));
             }
         }

@@ -104,6 +104,10 @@ public class Verb implements Parcelable{
         return perfekt_3;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public int describeContents() {
         return 0;

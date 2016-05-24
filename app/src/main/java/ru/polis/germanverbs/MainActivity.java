@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         //Запись языка в SP
         edit.putString(SHARED_PREF_LANGUAGE_TAG, langLocale);
         //Запись в SharedPrefs настроек по-умолчанию
-        edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, 20);
+        edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
         //Запись в SharedPrefs что первый старт уже был
         edit.putBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, false).apply();
     }

@@ -14,4 +14,15 @@
     <string name="not_enought_verb_message">Make more verbs active or reduce number of verbs to learn</string>
     <string name="cards_game_name">Cards Game</string>
     <string name="true_false_game_name">True or False</string>
+    <string name="result_activity_name">Result</string>
+    <string name="true_answer_cnt">Right answers: %d</string>
+    <string name="false_answer_cnt">False answers: %d</string>
+    <string name="result_percent">Accuracy: %d </string>
+    <string name="result_perfect">Excellent</string>
+    <string name="result_good">Good</string>
+    <string name="result_very_good">Very good</string>
+    <string name="result_not_good">Not good</string>
+    <string name="result_bad">Bad</string>
+    <string name="result_very_bad">Very bad</string>
+    <string name="result_awful">Awful</string>
 </resources>
