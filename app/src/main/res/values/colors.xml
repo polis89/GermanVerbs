@@ -10,4 +10,7 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorTrueAnswer">#7cb342</color>
     <color name="colorFalseAnswer">#FF5722</color>
+    <color name="background">#eeeeee</color>
+    <color name="true_false_no">#b71c1c</color>
+    <color name="true_false_yes">#2e7d32</color>
 </resources>

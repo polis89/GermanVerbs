@@ -6,4 +6,11 @@
     <dimen name="text_marg">8dp</dimen>
     <dimen name="standart_image_view_size">48dp</dimen>
     <dimen name="standart_image_view_padding">4dp</dimen>
+    <dimen name="true_false_btn_size">48dp</dimen>
+    <dimen name="true_false_inner_padding">18dp</dimen>
+    <dimen name="true_false_btn_text_size">20sp</dimen>
+    <dimen name="true_false_text_size">18sp</dimen>
+    <dimen name="true_false_question_size">32sp</dimen>
+    <dimen name="true_false_answer_size">20sp</dimen>
+    <dimen name="settings_txt_size">18sp</dimen>
 </resources>

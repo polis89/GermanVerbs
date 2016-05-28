@@ -24,11 +24,15 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".games.TrueFalseGameActivity"
+            android:label="@string/true_false_game_activity_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
+
         <activity android:name=".games.ResultActivity"
             android:label="@string/result_activity_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
 
     </application>
-
 </manifest>

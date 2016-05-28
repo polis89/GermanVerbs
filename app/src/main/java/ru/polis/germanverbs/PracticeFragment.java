@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import ru.polis.germanverbs.database.DBService;
 import ru.polis.germanverbs.games.CardsGameActivity;
+import ru.polis.germanverbs.games.TrueFalseGameActivity;
 import ru.polis.germanverbs.objects.Verb;
 
 /**
@@ -66,13 +67,14 @@ public class PracticeFragment extends Fragment{
 
         @Override
         public void onClick(View v) {
+            FragmentActivity activity = getActivity();
+            DBService dbService = DBService.getInstance(activity);
+            Intent intent;
             switch (v.getId()){
                 case R.id.cards_game_view:
-                    FragmentActivity activity = getActivity();
-                    Intent intent = new Intent(activity, CardsGameActivity.class);
+                    intent = new Intent(activity, CardsGameActivity.class);
                     int verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
                             .getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
-                    DBService dbService = DBService.getInstance(activity);
                     Verb[] randomVerbs;
                     try {
                         randomVerbs = dbService.getRandomVerbs(verbCount, ((MainActivity)activity).language);
@@ -83,7 +85,11 @@ public class PracticeFragment extends Fragment{
                     }
                     break;
                 case R.id.card_view_true_false_game:
-                    Toast.makeText(getContext(), "Game 2", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(activity, TrueFalseGameActivity.class);
+                    Verb[] allActiveVerbs;
+                    allActiveVerbs = dbService.getAllActiveVerbs(((MainActivity)activity).language);
+                    intent.putExtra(RANDOM_VERB_INTENT_EXTRA, allActiveVerbs);
+                    startActivity(intent);
                     break;
                 case R.id.card_view_game_3:
                     Toast.makeText(getContext(), "Game 3", Toast.LENGTH_SHORT).show();

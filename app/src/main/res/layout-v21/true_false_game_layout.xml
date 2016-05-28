@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="ru.polis.germanverbs.games.TrueFalseGameActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:elevation="4dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:id="@+id/trueFalseLayout"
+        android:clipToPadding="false"
+        android:clickable="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:clipToPadding="false">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/true_false_btn_size"
+                android:id="@+id/btnNegativeTrueFalseGame"
+                android:layout_weight="1"
+                android:background="@color/true_false_no"
+                android:elevation="4dp"
+                android:contentDescription="@string/true_false_game_false"
+                android:layout_margin="@dimen/true_false_inner_padding"
+                android:text="@string/no"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="@dimen/true_false_btn_text_size"
+                android:clickable="true"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/true_false_btn_size"
+                android:id="@+id/btnPositiveTrueFalseGame"
+                android:layout_weight="1"
+                android:background="@color/true_false_yes"
+                android:elevation="4dp"
+                android:contentDescription="@string/game_true_false_true"
+                android:layout_marginBottom="@dimen/true_false_inner_padding"
+                android:layout_marginRight="@dimen/true_false_inner_padding"
+                android:layout_marginEnd="@dimen/true_false_inner_padding"
+                android:layout_marginTop="@dimen/true_false_inner_padding"
+                android:text="@string/yes"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="@dimen/true_false_btn_text_size"
+                android:clickable="true"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/gameTrueFalseScoreView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/true_false_text_size"
+            android:padding="@dimen/true_false_inner_padding"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/gameTrueFalseMnozitelView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="@dimen/true_false_text_size"
+            android:textIsSelectable="false"
+            android:padding="@dimen/true_false_inner_padding"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/true_false_answer_size"
+            android:text="Test"
+            android:id="@+id/gameTrueFalseAnswerView"
+            android:layout_gravity="center_horizontal">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chronometer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:textSize="@dimen/settings_txt_size"/>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

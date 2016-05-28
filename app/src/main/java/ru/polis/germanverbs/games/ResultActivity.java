@@ -61,7 +61,12 @@ public class ResultActivity extends AppCompatActivity {
             trueAnsCnt += res.getAnswerTrueCount();
             falseAnsCnt += res.getAnswerFalseCount();
         }
-        float resultInPercent = (trueAnsCnt * 100) / (falseAnsCnt + trueAnsCnt);
+        float resultInPercent;
+        if(falseAnsCnt + trueAnsCnt == 0){
+            resultInPercent = 0;
+        }else {
+            resultInPercent = (trueAnsCnt * 100) / (falseAnsCnt + trueAnsCnt);
+        }
 
         //Заплонение Вью информацией
         TextView trueAnsTextView = (TextView) findViewById(R.id.rightAnswerTextView);

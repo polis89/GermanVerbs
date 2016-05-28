@@ -184,6 +184,47 @@ public class DBService {
         writableDatabase.close();
     }
 
+    public Verb[] getAllActiveVerbs(Language language) {
+        Cursor cursor = dbHelper.getReadableDatabase().
+                rawQuery("SELECT " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_ID + ", "
+                        + DBHelper.TABLE_WORD_KEY_INFINITIVE + ", " +
+                        DBHelper.TABLE_WORD_KEY_INFINITIVE_3PERSON + ", " +
+                        DBHelper.TABLE_WORD_KEY_PRATERITUM + ", " +
+                        DBHelper.TABLE_WORD_KEY_PERFEKT + ", " +
+                        language.getNameForDB() + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM1 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM2 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PRATERITUM3 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT1 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT2 + ", " +
+                        DBHelper.TABLE_MISTAKE_KEY_PERFEKT3 +
+                        " FROM " + DBHelper.TABLE_WORD_NAME +
+                        " INNER JOIN " + DBHelper.TABLE_MISTAKE_NAME +
+                        " ON " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_ID + " = " + DBHelper.TABLE_MISTAKE_NAME + "." + DBHelper.TABLE_MISTAKE_KEY_WORD_ID +
+                        " WHERE " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_IS_ACTIVE + " = 1", null);
+        int countAllVerbs = cursor.getCount();
+        Verb[] verbs = new Verb[countAllVerbs];
+        cursor.moveToFirst();
+        for(int i = 0; i < verbs.length; i++){
+            int id = cursor.getInt(0);
+            String infinitive = cursor.getString(1);
+            String infinitive_3_person = cursor.getString(2);
+            String prateritum = cursor.getString(3);
+            String perfekt = cursor.getString(4);
+            String translate = cursor.getString(5);
+            String prat_miss_1 = cursor.getString(6);
+            String prat_miss_2 = cursor.getString(7);
+            String prat_miss_3 = cursor.getString(8);
+            String perf_miss_1 = cursor.getString(9);
+            String perf_miss_2 = cursor.getString(10);
+            String perf_miss_3 = cursor.getString(11);
+            Verb verb = new Verb(id, infinitive, infinitive_3_person, prateritum, perfekt, translate, prat_miss_1, prat_miss_2, prat_miss_3, perf_miss_1, perf_miss_2, perf_miss_3);
+            verbs[i] = verb;
+            cursor.moveToNext();
+        }
+        return verbs;
+    }
+
     public class NotEnoghtVerbsException extends Exception {
     }
 }
