@@ -26,10 +26,10 @@ import ru.polis.germanverbs.objects.Verb;
  */
 public class TrueFalseGameActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String LOG = "TrueFalseGameActivity";
-    public static final int PLAY_TIME = 30;
-    public static final int START_SCORE_STEP = 10;
-    public static final int RIGHT_ANSWER_PROGRESS = 1;
-    public static final int FALSE_ANSWER_PROGRESS = -1;
+    public static final int PLAY_TIME = 45;
+    public static final int START_SCORE_STEP = 1;
+    public static final int RIGHT_ANSWER_PROGRESS = 2;
+    public static final int FALSE_ANSWER_PROGRESS = -2;
 
     private Random random;
     private int score;
@@ -52,7 +52,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
 
         //Развертка layout
-        setContentView(R.layout.true_false_game_layout);
+        setContentView(R.layout.true_false_layout_alt);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,6 +76,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         answerView = (TextView) findViewById(R.id.gameTrueFalseAnswerView);
         chronometerView = (TextView) findViewById(R.id.chronometer);
 
+        answerView.setTextSize(35);
         answerView.setText(R.string.true_false_start);
         scoreView.setText(getResources().getString(R.string.true_false_score, score));
         multipleView.setText(getResources().getString(R.string.true_false_multiple, scoreStep));
@@ -88,7 +89,9 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     protected void onStop() {
         super.onStop();
         Log.i(LOG, "onStop");
-        time.cancel(false);
+        if(time != null) {
+            time.cancel(false);
+        }
         finish();
     }
 
@@ -102,6 +105,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         time.execute();
 
         nextQuestion();
+        answerView.setTextSize(20);
     }
 
     //Called after Time limit
@@ -178,7 +182,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     //Called after true answer
     private void addRightAnswer() {
         score += scoreStep;
-        scoreStep *= 1.3;
+        scoreStep *= 2;
         results[presentVerbNum].addTrueAnswer();
         results[presentVerbNum].addProgress(RIGHT_ANSWER_PROGRESS);
     }
