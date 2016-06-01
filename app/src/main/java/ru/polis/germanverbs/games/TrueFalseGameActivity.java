@@ -52,7 +52,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
 
         //Развертка layout
-        setContentView(R.layout.true_false_layout_alt);
+        setContentView(R.layout.true_false_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
