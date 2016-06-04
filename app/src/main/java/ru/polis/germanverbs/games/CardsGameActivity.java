@@ -29,10 +29,23 @@ public class CardsGameActivity extends AppCompatActivity{
     private static final int TRUE_ANSWER_PROGRESS = 5; //Очки прогресса за правильный ответ
     private static final int FALSE_ANSWER_PROGRESS = -5; //Очки прогресса за не правильный ответ
 
+    //Consts for onSaveInstance
+    public static final String SAVE_KEY_PRESENT_VERB_NUM = "presentVerbNum";
+    public static final String SAVE_KEY_PRESENT_PART = "presentPart";
+    public static final String SAVE_KEY_VERBS = "verbs";
+    public static final String SAVE_KEY_RESULTS = "results";
+    private static final String SAVE_KEY_VARIANT_1 = "variant1";
+    private static final String SAVE_KEY_VARIANT_2 = "variant2";
+    private static final String SAVE_KEY_VARIANT_3 = "variant3";
+    private static final String SAVE_KEY_VARIANT_4 = "variant4";
+    private static final String SAVE_KEY_ANSWERS = "answers";
+
     private Verb[] verbs; //Все глаголы для изучения
     private Result[] results; //Результаты изучения глагола
     private int presentVerbNum; //номер текущего глагола
     private int presentPart; //Текущий этап (0 - инфинитив, 1 - претеритум, 2 - has/ist, 3 - перфект, 4 - если все глаголы повторены)
+
+    private boolean[] answers; //For saving color of Answers if reCreate
 
     private TextView translateTextView;
     private TextView verbFormsTextView;
@@ -57,24 +70,6 @@ public class CardsGameActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Достаем глаголы из интента
-        Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
-        verbs = new Verb[parcelableArrayExtra.length];
-        results = new Result[parcelableArrayExtra.length];
-        for (int i = 0; i < parcelableArrayExtra.length; i++){
-            verbs[i] = (Verb) parcelableArrayExtra[i];
-            results[i] = new Result();
-        }
-
-        //Перемешивание глаголов
-        Random random = new Random(System.currentTimeMillis());
-        for(int i = 0; i < verbs.length; i++){
-            int rndInt = random.nextInt(verbs.length);
-            Verb temp = verbs[i];
-            verbs[i] = verbs[rndInt];
-            verbs[rndInt] = temp;
-        }
-
         //Инициализация кардвью
         var1CardView = (CardView) findViewById(R.id.variant1_card_view);
         var2CardView = (CardView) findViewById(R.id.variant2_card_view);
@@ -91,21 +86,80 @@ public class CardsGameActivity extends AppCompatActivity{
             Toast.makeText(this, "ERROR Answer Init", Toast.LENGTH_SHORT).show();
         }
 
-        //Инициализация текствью
         var1TextView = (TextView) findViewById(R.id.variant1_text_view);
+        //Инициализация текствью
         var2TextView = (TextView) findViewById(R.id.variant2_text_view);
         var3TextView = (TextView) findViewById(R.id.variant3_text_view);
         var4TextView = (TextView) findViewById(R.id.variant4_text_view);
         translateTextView = (TextView) findViewById(R.id.translate_text_view);
         verbFormsTextView = (TextView) findViewById(R.id.verb_formen);
+        answers = new boolean[4];
+
+        if(savedInstanceState == null) {
+            //Достаем глаголы из интента
+            Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
+            verbs = new Verb[parcelableArrayExtra.length];
+            results = new Result[parcelableArrayExtra.length];
+            for (int i = 0; i < parcelableArrayExtra.length; i++) {
+                verbs[i] = (Verb) parcelableArrayExtra[i];
+                results[i] = new Result();
+            }
+
+            //Перемешивание глаголов
+            Random random = new Random(System.currentTimeMillis());
+            for (int i = 0; i < verbs.length; i++) {
+                int rndInt = random.nextInt(verbs.length);
+                Verb temp = verbs[i];
+                verbs[i] = verbs[rndInt];
+                verbs[rndInt] = temp;
+            }
+
+            //Отобразить первый глагол
+            startVerb();
+        } else {
+            //Re-create activity
+            presentVerbNum = savedInstanceState.getInt(SAVE_KEY_PRESENT_VERB_NUM);
+            presentPart = savedInstanceState.getInt(SAVE_KEY_PRESENT_PART);
+            verbs = (Verb[]) savedInstanceState.getParcelableArray(SAVE_KEY_VERBS);
+            results = (Result[]) savedInstanceState.getParcelableArray(SAVE_KEY_RESULTS);
+            var1TextView.setText(savedInstanceState.getString(SAVE_KEY_VARIANT_1));
+            var2TextView.setText(savedInstanceState.getString(SAVE_KEY_VARIANT_2));
+            var3TextView.setText(savedInstanceState.getString(SAVE_KEY_VARIANT_3));
+            var4TextView.setText(savedInstanceState.getString(SAVE_KEY_VARIANT_4));
+            verbFormsTextView.setText(getTextForResultTextView(presentPart - 1));
+            translateTextView.setText(verbs[presentVerbNum].getTranslate());
+            answers = savedInstanceState.getBooleanArray(SAVE_KEY_ANSWERS);
+            setColors();
+        }
 
         Log.i(LOG_TAG, "lenght verb = " + verbs.length);
-        //Отобразить первый глагол
-        startVerb();
+    }
+
+    private void setColors() {
+        int colorFalse = getResources().getColor(R.color.colorFalseAnswer);
+        for(int i = 0; i < 4; i++){
+            if (answers[i]){
+                switch (i){
+                    case 0:
+                        var1CardView.setCardBackgroundColor(colorFalse);
+                        break;
+                    case 1:
+                        var2CardView.setCardBackgroundColor(colorFalse);
+                        break;
+                    case 2:
+                        var3CardView.setCardBackgroundColor(colorFalse);
+                        break;
+                    case 3:
+                        var4CardView.setCardBackgroundColor(colorFalse);
+                        break;
+                }
+            }
+        }
     }
 
     //Показать следующий глагол
     private void startVerb() {
+        answers = new boolean[4];
         if(presentVerbNum != verbs.length){ //Проверка есть ли еще глаголы
             int colorWhite = getResources().getColor(R.color.colorTextOrIcons); //Бедый цвет для не нажатых вариантов
             var1CardView.setCardBackgroundColor(colorWhite);
@@ -141,6 +195,7 @@ public class CardsGameActivity extends AppCompatActivity{
 
     //Показать следущий этап (Для нового глагола - startVerb)
     private void showNextPart() {
+        answers = new boolean[4];
         int colorWhite = getResources().getColor(R.color.colorTextOrIcons); //Бедый цвет для не нажатых вариантов
         String[] variants = new String[4]; //Варианты ответа
         String[] mixVars; //перемешанные варианты
@@ -150,7 +205,7 @@ public class CardsGameActivity extends AppCompatActivity{
                 var2CardView.setCardBackgroundColor(colorWhite);
                 var3CardView.setCardBackgroundColor(colorWhite);
                 var4CardView.setCardBackgroundColor(colorWhite);
-                verbFormsTextView.setText(verbs[presentVerbNum].getInfinitive());
+                verbFormsTextView.setText(getTextForResultTextView(presentPart));
                 variants[0] = verbs[presentVerbNum].getPrateritum(); //Добавление правильного варианта
                 variants[1] = verbs[presentVerbNum].getPrateritum_1(); //Добавление не правильного варианта
                 variants[2] = verbs[presentVerbNum].getPrateritum_2(); //Добавление не правильного варианта
@@ -167,7 +222,7 @@ public class CardsGameActivity extends AppCompatActivity{
                 var2CardView.setCardBackgroundColor(colorWhite);
                 var3CardView.setCardBackgroundColor(colorWhite);
                 var4CardView.setCardBackgroundColor(colorWhite);
-                verbFormsTextView.setText(verbs[presentVerbNum].getInfinitive() + " - " + verbs[presentVerbNum].getPrateritum());
+                verbFormsTextView.setText(getTextForResultTextView(presentPart));
                 variants[0] = "ist";
                 variants[1] = "hat";
                 variants[2] = "-";
@@ -183,7 +238,7 @@ public class CardsGameActivity extends AppCompatActivity{
                 var2CardView.setCardBackgroundColor(colorWhite);
                 var3CardView.setCardBackgroundColor(colorWhite);
                 var4CardView.setCardBackgroundColor(colorWhite);
-                verbFormsTextView.setText(verbs[presentVerbNum].getInfinitive() + " - " + verbs[presentVerbNum].getPrateritum() + " - " + verbs[presentVerbNum].getPerfekt().split(" ")[0]);
+                verbFormsTextView.setText(getTextForResultTextView(presentPart));
                 variants[0] = verbs[presentVerbNum].getPerfekt().split(" ")[1]; //Добавление правильного варианта
                 variants[1] = verbs[presentVerbNum].getPerfekt_1(); //Добавление не правильного варианта
                 variants[2] = verbs[presentVerbNum].getPerfekt_2(); //Добавление не правильного варианта
@@ -202,6 +257,23 @@ public class CardsGameActivity extends AppCompatActivity{
             default:
                 throw new UnsupportedOperationException();
         }
+    }
+
+    private String getTextForResultTextView(int presentPart) {
+        switch (presentPart){
+            case 0:
+                return verbs[presentVerbNum].getInfinitive();
+            case 1:
+                return verbs[presentVerbNum].getInfinitive() + " - " + verbs[presentVerbNum].getPrateritum();
+            case 2:
+                return verbs[presentVerbNum].getInfinitive() + " - " + verbs[presentVerbNum].getPrateritum() + " - " + verbs[presentVerbNum].getPerfekt().split(" ")[0];
+            case 3:
+                return (verbs[presentVerbNum].getInfinitive() + " - " +
+                        verbs[presentVerbNum].getPrateritum() + " - " +
+                        verbs[presentVerbNum].getPerfekt().split(" ")[0] + " " +
+                        verbs[presentVerbNum].getPerfekt().split(" ")[1]);
+        }
+        return "";
     }
 
     private String[] getInfinitiveVariants() {
@@ -240,6 +312,18 @@ public class CardsGameActivity extends AppCompatActivity{
         return mixedVars;
     }
 
+    public void setFalseAnswerArray(int falseAnswerCardViewID) {
+        if(falseAnswerCardViewID == var1CardView.getId()){
+            answers[0] = true;
+        }else if(falseAnswerCardViewID == var2CardView.getId()){
+            answers[1] = true;
+        }else if(falseAnswerCardViewID == var3CardView.getId()){
+            answers[2] = true;
+        }else if(falseAnswerCardViewID == var4CardView.getId()){
+            answers[3] = true;
+        }
+    }
+
     private class AnswerListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -270,10 +354,7 @@ public class CardsGameActivity extends AppCompatActivity{
                 results[presentVerbNum].addProgress(TRUE_ANSWER_PROGRESS);
                 cardAnswerView.setCardBackgroundColor(getResources().getColor(R.color.colorTrueAnswer));
                 if(presentPart == 3){ //Перед переходом к следующему глаголу показывает правильное спряжение
-                    verbFormsTextView.setText(verbs[presentVerbNum].getInfinitive() + " - "
-                            + verbs[presentVerbNum].getPrateritum() + " - "
-                            + verbs[presentVerbNum].getPerfekt().split(" ")[0] + " "
-                            + verbs[presentVerbNum].getPerfekt().split(" ")[1]);
+                    getTextForResultTextView(presentPart);
                 }
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -285,6 +366,7 @@ public class CardsGameActivity extends AppCompatActivity{
             } else {
                 results[presentVerbNum].addFalseAnswer();
                 results[presentVerbNum].addProgress(FALSE_ANSWER_PROGRESS);
+                setFalseAnswerArray(cardAnswerView.getId());
                 cardAnswerView.setCardBackgroundColor(getResources().getColor(R.color.colorFalseAnswer));
             }
         }
@@ -308,5 +390,19 @@ public class CardsGameActivity extends AppCompatActivity{
             }
             return answer.equals(rightAnswer);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SAVE_KEY_PRESENT_VERB_NUM, presentVerbNum);
+        outState.putInt(SAVE_KEY_PRESENT_PART, presentPart);
+        outState.putParcelableArray(SAVE_KEY_VERBS, verbs);
+        outState.putParcelableArray(SAVE_KEY_RESULTS, results);
+        outState.putString(SAVE_KEY_VARIANT_1, var1TextView.getText().toString());
+        outState.putString(SAVE_KEY_VARIANT_2, var2TextView.getText().toString());
+        outState.putString(SAVE_KEY_VARIANT_3, var3TextView.getText().toString());
+        outState.putString(SAVE_KEY_VARIANT_4, var4TextView.getText().toString());
+        outState.putBooleanArray(SAVE_KEY_ANSWERS, answers);
     }
 }

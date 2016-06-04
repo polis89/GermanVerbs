@@ -28,6 +28,8 @@ import ru.polis.germanverbs.enums.Language;
 public class VerbsFragment extends ListFragment{
     private static final String LOG_TAG = "ListFragment";
     private Language language;
+    private Cursor cursor;
+    private SQLiteDatabase sqLiteDatabase;
 
     public static Fragment getNewInstance() {
         return new VerbsFragment();
@@ -37,8 +39,8 @@ public class VerbsFragment extends ListFragment{
     public void setAdapter(Context context) {
         Log.i(LOG_TAG, "setAdapter");
         language = ((MainActivity)context).language;
-        SQLiteDatabase writableDatabase = DBService.getInstance(context).getDBHelper().getReadableDatabase();
-        Cursor cursor = writableDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null);
+        sqLiteDatabase = DBService.getInstance(context).getDBHelper().getReadableDatabase();
+        cursor = sqLiteDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null);
         setListAdapter(new VerbCursorAdapter(context, cursor, true));
     }
 

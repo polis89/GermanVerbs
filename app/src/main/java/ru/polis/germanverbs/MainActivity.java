@@ -53,11 +53,12 @@ public class MainActivity extends AppCompatActivity {
         //Проверка на первый запуск
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
         boolean firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
+
         //Init verbsFragment
         verbsFragment = (VerbsFragment) VerbsFragment.getNewInstance();
 
         if(firstStart){
-            firstStart(); //Первый Запуск
+            firstStart();
         } else {
             String langString = sharedPreferences.getString(SHARED_PREF_LANGUAGE_TAG, "en");
             Log.i(LOG_TAG, "Lang = " + langString);
@@ -99,12 +100,18 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager pagerMain = (ViewPager) findViewById(R.id.pagerMain);
         assert pagerMain != null;
         pagerMain.setAdapter(fragmentPagerAdapter);
+
+        bottomBar = BottomBar.attach(this, savedInstanceState);
+        bottomBar.noTopOffset();
+
         pagerMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 bottomBar.selectTabAtPosition(position, true);
                 if(position == 1){
-                    searchMenuItem.setVisible(true);
+                    if(searchMenuItem != null) {
+                        searchMenuItem.setVisible(true);
+                    }
                 }else{
                     searchMenuItem.setVisible(false);
                 }
@@ -120,10 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        //Init BottomBar
-        bottomBar = BottomBar.attach(this, savedInstanceState);
-        bottomBar.noTopOffset();
 
         //Bind BottomBar with ViewPager
         bottomBar.setItemsFromMenu(R.menu.menu_bottom_bar, new OnMenuTabClickListener() {
@@ -144,9 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onMenuTabReSelected(@IdRes int menuItemId) {
-//                if (resId == R.id.bb_menu_recents) {
-//                    // The user reselected the "Recents" tab. React accordingly.
-//                }
             }
         });
         if(!firstStart){
