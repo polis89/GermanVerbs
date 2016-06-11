@@ -14,4 +14,5 @@
     <dimen name="true_false_answer_size">20sp</dimen>
     <dimen name="settings_txt_size">18sp</dimen>
     <dimen name="toolbar_shadow">4dp</dimen>
+    <dimen name="type_word_answer_height">45dp</dimen>
 </resources>

@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF_LANGUAGE_TAG = "language"; //Переменная языка в SharedPrefs - возвращает по-типу Locale
     public static final String SHARED_PREF_FIRST_LAUNCH_TAG = "first_launch"; //Переменная для определения первого запуска в SharedPrefs
     public static final String SHARED_PREF_CARDS_GAME_WORD_COUNT = "cards_game_word_count"; //Количество слов для изучения в игре-карточки
+    public static final String SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT = "type_word_game_word_count";
 
     public Language language;
     private BottomBar bottomBar;
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         edit.putString(SHARED_PREF_LANGUAGE_TAG, langLocale);
         //Запись в SharedPrefs настроек по-умолчанию
         edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
+        edit.putInt(SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 4);
         //Запись в SharedPrefs что первый старт уже был
         edit.putBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, false).apply();
     }
@@ -191,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             RadioButton radioButtonView = new RadioButton(this);
             radioButtonView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(l.getImageResID()), null, null, null);
             radioButtonView.setPadding(16, 16, 16, 16);
-            radioButtonView.setCompoundDrawablePadding(32);
+            radioButtonView.setCompoundDrawablePadding(16);
             radioButtonView.setText(l.getDescription());
             radioGroup.addView(radioButtonView);
             if(l == language) {

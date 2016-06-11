@@ -95,7 +95,7 @@
         <!-- A CardView for Game 3 -->
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view_game_3"
+            android:id="@+id/card_view_type_word"
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="Game 3"/>
+                    android:text="@string/type_word"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

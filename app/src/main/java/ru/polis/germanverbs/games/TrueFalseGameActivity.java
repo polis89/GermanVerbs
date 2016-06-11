@@ -19,11 +19,6 @@ import ru.polis.germanverbs.R;
 import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
 
-/**
- *
- *
- * Created by Dmitrii on 28.05.2016.
- */
 public class TrueFalseGameActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String LOG = "TrueFalseGameActivity";
     public static final int PLAY_TIME = 45;
