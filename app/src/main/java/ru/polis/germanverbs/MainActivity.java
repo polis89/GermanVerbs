@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -191,8 +192,11 @@ public class MainActivity extends AppCompatActivity {
         final RadioGroup radioGroup = (RadioGroup) dialogView.findViewById(R.id.chooseLanguageRadioGroup);
         for(Language l : Language.values()){
             RadioButton radioButtonView = new RadioButton(this);
-            radioButtonView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(l.getImageResID()), null, null, null);
-            radioButtonView.setPadding(16, 16, 16, 16);
+            Drawable image = getResources().getDrawable(l.getImageResID());
+            int h = image.getIntrinsicHeight();
+            int w = image.getIntrinsicWidth();
+            image.setBounds( 0, 0, w, h );
+            radioButtonView.setCompoundDrawables( image, null, null, null );
             radioButtonView.setCompoundDrawablePadding(16);
             radioButtonView.setText(l.getDescription());
             radioGroup.addView(radioButtonView);
@@ -202,8 +206,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         builder.setView(dialogView);
-
-
 
         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             @Override

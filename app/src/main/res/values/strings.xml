@@ -37,5 +37,4 @@
     <string name="type_word">Type word</string>
     <string name="type_word_hint">Type here</string>
     <string name="type_word_button_dsc">check answer</string>
-    <string name="type_word_button_unknown_dsc">Dont know</string>
 </resources>

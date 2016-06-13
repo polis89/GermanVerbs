@@ -33,7 +33,8 @@
         <activity android:name=".games.TypeWordGameActivity"
             android:label="@string/type_word_game_activity_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".games.ResultActivity"
             android:label="@string/result_activity_name"
