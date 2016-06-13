@@ -33,12 +33,6 @@ public class TypeWordGameActivity extends AppCompatActivity implements TextView.
     private static final int RIGHT_ANSWER_DELAY_MS = 1800;
     private static final String EMPTY_POSITION_STRING = ".....";
 
-//    //Consts for onSaveInstance
-    public static final String SAVE_KEY_VERBS = "verbs";
-    public static final String SAVE_KEY_RESULTS = "results";
-    public static final String SAVE_KEY_PRESENT_VERB_NUM = "presentVerbNum";
-    public static final String SAVE_KEY_QUESTION_STRING = "presentVerbNum";
-
     private Verb[] verbs; //Все глаголы для изучения
     private Result[] results; //Результаты изучения глагола
     private int presentVerbNum; //номер текущего глагола
