@@ -1,5 +1,6 @@
 package ru.polis.germanverbs.games;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.Random;
 
@@ -26,6 +29,9 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     public static final int RIGHT_ANSWER_PROGRESS = 2;
     public static final int FALSE_ANSWER_PROGRESS = -2;
 
+    public static final String SHARED_PREF = "prefs";
+    public static final String SHARED_PREF_TRUE_FALSE_RECORD = "record";
+
     private Random random;
     private int score;
     private int scoreStep;
@@ -33,12 +39,15 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     private Result[] results; //Результаты изучения глагола
     private int presentVerbNum; //номер текущего глагола
     private Question currentQuestion; //Текущий вопрос
+    private int record;
 
     private RelativeLayout relativeLayout;
     private TextView scoreView;
     private TextView multipleView;
     private TextView answerView;
     private TextView chronometerView;
+    private TextView recordView;
+    private RoundCornerProgressBar recordProgressBar;
 
     private TimerAsyncTask time;
 
@@ -70,11 +79,20 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         multipleView = (TextView) findViewById(R.id.gameTrueFalseMnozitelView);
         answerView = (TextView) findViewById(R.id.gameTrueFalseAnswerView);
         chronometerView = (TextView) findViewById(R.id.chronometer);
+        recordProgressBar = (RoundCornerProgressBar) findViewById(R.id.record_progress_bar);
+        recordView = (TextView) findViewById(R.id.textViewRecord);
+
+        record = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+                .getInt(SHARED_PREF_TRUE_FALSE_RECORD, 0);
+        recordProgressBar.setMax(record);
+        recordProgressBar.setSecondaryProgress(record);
+        recordProgressBar.setProgress(0);
 
         answerView.setTextSize(35);
         answerView.setText(R.string.true_false_start);
         scoreView.setText(getResources().getString(R.string.true_false_score, score));
         multipleView.setText(getResources().getString(R.string.true_false_multiple, scoreStep));
+        recordView.setText(getResources().getString(R.string.true_false_record, record));
         chronometerView.setText(String.valueOf(PLAY_TIME));
 
         relativeLayout.setOnClickListener(this);
@@ -87,7 +105,6 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         if(time != null) {
             time.cancel(false);
         }
-        finish();
     }
 
     //Called after user touch screen to start game
@@ -105,6 +122,10 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
 
     //Called after Time limit
     private void stopGame() {
+        //Update record
+        if(record < score){
+            getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE).edit().putInt(SHARED_PREF_TRUE_FALSE_RECORD, score).commit();
+        }
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
         intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
         intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
@@ -157,7 +178,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
                 ans += verb.getPrateritum() + " - " + rightHatIst + " " + wrongPerfect[rndPerf];
                 break;
             case 2:
-                String wrongHasIst = (rightHatIst.equals("ist")) ? "has" : "ist";
+                String wrongHasIst = (rightHatIst.equals("ist")) ? "hat" : "ist";
                 ans += verb.getPrateritum() + " - " + wrongHasIst + " " + verb.getPerfekt().split(" ")[1];
                 break;
         }
@@ -180,6 +201,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         scoreStep *= 2;
         results[presentVerbNum].addTrueAnswer();
         results[presentVerbNum].addProgress(RIGHT_ANSWER_PROGRESS);
+        recordProgressBar.setProgress(score);
     }
 
     //Called after false answer

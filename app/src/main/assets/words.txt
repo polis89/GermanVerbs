@@ -84,7 +84,7 @@ riechen-roch-hat gerochen-riech-rochte-rachte-gerocht-gerachen-geriecht-to smell
 ringen-rang-hat gerungen-rung-rieng-rangte-geringen-geringt-gerangt-to wrestle-бороться
 rinnen-rann-ist geronnen-rien-runn-rinnte-geronnt-gerinnt-gerinnen-to flow/trickle-струиться
 rufen-rief-hat gerufen-rufte-raff-rof-geriffen-geriefen-gerieft-to call-звать
-salzen-salzte-hat gesalzen-soltz-solzte-salz-gesalzt-gesolzt-gesalzen-to salt-солить
+salzen-salzte-hat gesalzen-soltz-solzte-salz-gesalzt-gesolzt-gesolzen-to salt-солить
 saugen-sog-hat gesogen-sag-sogte-sagte-gesogt-gesaugt-gesaugen-to suck-сосать
 schaffen-schuf-hat geschaffen-schiff-schiffte-schaff-geschafft-geschiffen-geschuffen-to create-создавать
 scheiden-schied-ist/hat geschieden-schitt-scheidete-schud-geschiedt-geschitten-gescheiden-to separate-расставаться

@@ -33,6 +33,7 @@
     <string name="true_false_start">Start</string>
     <string name="true_false_score">Score: %d</string>
     <string name="true_false_multiple">Multiple: %d</string>
+    <string name="true_false_record">Top score: %d</string>
     <string name="type_word_game_activity_name">Type word</string>
     <string name="type_word">Type word</string>
     <string name="type_word_hint">Type here</string>

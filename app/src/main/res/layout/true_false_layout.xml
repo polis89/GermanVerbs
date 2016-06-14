@@ -70,6 +70,30 @@
 
         </android.support.v7.widget.CardView>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp">
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/record_progress_bar"
+                app:rcRadius="3dp"
+                app:rcProgressColor="@color/colorTrueAnswer"
+                app:rcSecondaryProgressColor="@color/white"
+                app:rcBackgroundColor="@color/colorDivider"
+                app:rcBackgroundPadding="1dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewRecord"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="14dp"/>
+        </FrameLayout>
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -100,7 +124,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="@dimen/true_false_answer_size"
                     android:id="@+id/gameTrueFalseAnswerView"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center">
                 </TextView>
             </RelativeLayout>
 
