@@ -186,11 +186,6 @@ public class TypeWordGameActivity extends AppCompatActivity implements TextView.
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public void onClick(View v) {
         if(!pause) {
             switch (v.getId()) {

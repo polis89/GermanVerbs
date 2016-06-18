@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import ru.polis.germanverbs.database.DBService;
 import ru.polis.germanverbs.games.CardsGameActivity;
+import ru.polis.germanverbs.games.FullWordTypeGameActivity;
 import ru.polis.germanverbs.games.TrueFalseGameActivity;
 import ru.polis.germanverbs.games.TypeWordGameActivity;
 import ru.polis.germanverbs.objects.Verb;
@@ -45,7 +46,7 @@ public class PracticeFragment extends Fragment{
         CardView viewGame1 = (CardView) view.findViewById(R.id.cards_game_view);
         CardView viewGame2 = (CardView) view.findViewById(R.id.card_view_true_false_game);
         CardView viewGame3 = (CardView) view.findViewById(R.id.card_view_type_word);
-        CardView viewGame4 = (CardView) view.findViewById(R.id.card_view_game_4);
+        CardView viewGame4 = (CardView) view.findViewById(R.id.card_view_game_type_full_words);
 
         ImageView infoView1 = (ImageView) view.findViewById(R.id.help_cards_game);
         ImageView infoView2 = (ImageView) view.findViewById(R.id.help_true_false_game);
@@ -105,8 +106,17 @@ public class PracticeFragment extends Fragment{
                         Toast.makeText(activity, getString(R.string.not_enought_verb_message), Toast.LENGTH_SHORT).show();
                     }
                     break;
-                case R.id.card_view_game_4:
-                    Toast.makeText(getContext(), "Game 4", Toast.LENGTH_SHORT).show();
+                case R.id.card_view_game_type_full_words:
+                    intent = new Intent(activity, FullWordTypeGameActivity.class);
+                    verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
+                            .getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 4);
+                    try {
+                        randomVerbs = dbService.getRandomVerbs(verbCount, ((MainActivity)activity).language);
+                        intent.putExtra(RANDOM_VERB_INTENT_EXTRA, randomVerbs);
+                        startActivity(intent);
+                    } catch (DBService.NotEnoghtVerbsException e) {
+                        Toast.makeText(activity, getString(R.string.not_enought_verb_message), Toast.LENGTH_SHORT).show();
+                    }
                     break;
                 case R.id.help_cards_game:
                     Toast.makeText(getContext(), "Info Game 1", Toast.LENGTH_SHORT).show();

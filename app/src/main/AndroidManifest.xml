@@ -36,6 +36,12 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".games.FullWordTypeGameActivity"
+            android:label="@string/full_type_word_game_activity_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".games.ResultActivity"
             android:label="@string/result_activity_name"
             android:theme="@style/AppTheme.NoActionBar"

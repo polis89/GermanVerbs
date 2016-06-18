@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF_FIRST_LAUNCH_TAG = "first_launch"; //Переменная для определения первого запуска в SharedPrefs
     public static final String SHARED_PREF_CARDS_GAME_WORD_COUNT = "cards_game_word_count"; //Количество слов для изучения в игре-карточки
     public static final String SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT = "type_word_game_word_count";
+    public static final String SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT = "full_type_word_game_word_count";
 
     public Language language;
     private BottomBar bottomBar;

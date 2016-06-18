@@ -38,4 +38,9 @@
     <string name="type_word">Type word</string>
     <string name="type_word_hint">Type here</string>
     <string name="type_word_button_dsc">check answer</string>
+    <string name="full_type_word_game_activity_name">Type words</string>
+    <string name="hint_presens">Enter verb in presens</string>
+    <string name="hint_prateritum">Enter verb in präteritum</string>
+    <string name="hint_perfect">Enter verb in perfect</string>
+    <string name="full_word_type">Full word type</string>
 </resources>
