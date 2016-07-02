@@ -14,24 +14,24 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_verb_name"
-            android:text="backen(bake)"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="backen(bäckt)-buck-hat gebacken"
             android:id="@+id/text_verb_description"
             android:layout_below="@id/text_verb_name"/>
 
@@ -42,8 +42,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="9dp"
-            android:layout_marginRight="9dp"
-            android:layout_marginEnd="9dp"
             app:rcProgress="50.0"
             app:rcMax="100.0"
             app:rcBackgroundPadding="1dp"

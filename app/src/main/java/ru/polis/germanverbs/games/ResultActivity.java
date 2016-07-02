@@ -24,12 +24,12 @@ import ru.polis.germanverbs.objects.Verb;
  * Created by Dmitrii on 22.05.2016.
  */
 public class ResultActivity extends AppCompatActivity {
-    private static final int PERFECT_GRENZE = 100;
+    private static final int PERFECT_GRENZE = 98;
     private static final int VERY_GOOD_GRENZE = 90;
-    private static final int GOOD_GRENZE = 80;
-    private static final int NOT_GOOD_GRENZE = 60;
-    private static final int BAD_GRENZE = 40;
-    private static final int AWFUL_GRENZE = 20;
+    private static final int GOOD_GRENZE = 75;
+    private static final int NOT_GOOD_GRENZE = 50;
+    private static final int BAD_GRENZE = 30;
+    private static final int AWFUL_GRENZE = 10;
 
     public static final String VERBS_INTENT_EXTRA = "verbs_for_result";
     public static final String RESULT_INTENT_EXTRA = "result_extra";

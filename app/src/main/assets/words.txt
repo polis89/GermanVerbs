@@ -42,7 +42,7 @@ gelingen-gelang-ist gelungen-gelung-gelangte-gelungte-gelungt-gelangen-gelangt-t
 gelten(gilt)-galt-hat gegolten-golt-gilt-gielt-gegelten-gegolt-gegelt-to count/be worth-быть действительным
 genießen-genoss-hat genossen-genuss-geniss-genass-genussen-genosst-genießt-to enjoy-наслаждаться
 geschehen(geschieht)-geschah-ist geschehen-geschieh-gescheih-geschehte-gescheht-geschiehen-geschieht-to occur-происходить
-gewinnen-gewann-hat gewonnen-gewinn-gewonn-gewein-gewonnt-gewinnen-gewinnt-to win-выиграть
+gewinnen-gewann-hat gewonnen-gewinn-gewonn-gewein-gewonnt-gewinnen-gewinnt-to win-побеждать
 gießen-goss-hat gegossen-gass-giss-gosste-gegosste-gegissen-gegiesen-to pour-наливать
 gleichen-glich-hat geglichen-gleich-glitt-glachte-geglicht-geglitten-gegleicht-to resemble-сравнивать
 gleiten-glitt-ist geglitten-glatt-gleit-glott-gegleiten-geglittet-gegleitet-to glide-скользить

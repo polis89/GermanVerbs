@@ -45,9 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     public Language language;
     private BottomBar bottomBar;
-    private MenuItem searchMenuItem;
 
-    private  VerbsFragment verbsFragment;
+    public VerbsFragment verbsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,13 +110,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 bottomBar.selectTabAtPosition(position, true);
-                if(position == 1){
-                    if(searchMenuItem != null) {
-                        searchMenuItem.setVisible(true);
-                    }
-                }else{
-                    searchMenuItem.setVisible(false);
-                }
             }
 
             @Override
@@ -187,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         edit.putBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, false).apply();
     }
 
-    private void showChooseLanguageDialog() {
+    public void showChooseLanguageDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_choose_language, null);
         final RadioGroup radioGroup = (RadioGroup) dialogView.findViewById(R.id.chooseLanguageRadioGroup);
@@ -197,6 +189,12 @@ public class MainActivity extends AppCompatActivity {
             int h = image.getIntrinsicHeight();
             int w = image.getIntrinsicWidth();
             image.setBounds( 0, 0, w, h );
+//            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+//            {
+//                image.setBounds( 0, 0, w, h );
+//            } else {
+//                image.setBounds( 50, 0, w + 50, h );
+//            }
             radioButtonView.setCompoundDrawables( image, null, null, null );
             radioButtonView.setCompoundDrawablePadding(16);
             radioButtonView.setText(l.getDescription());
@@ -235,9 +233,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem languageMenuItem = menu.getItem(1);
+        MenuItem languageMenuItem = menu.getItem(0);
         languageMenuItem.setIcon(language.getImageResID());
-        searchMenuItem = menu.getItem(0);
         return true;
     }
 

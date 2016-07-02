@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/WtfPreference</item>
+    </style>
+
+    <style name="WtfPreference" parent="@style/PreferenceThemeOverlay">
+        <item name="android:textSize">17sp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

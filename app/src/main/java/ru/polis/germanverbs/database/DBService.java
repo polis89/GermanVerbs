@@ -184,6 +184,14 @@ public class DBService {
         writableDatabase.close();
     }
 
+    public void resetProgress(){
+        SQLiteDatabase writableDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBHelper.TABLE_WORD_KEY_PROGRESS, 0);
+        writableDatabase.update(DBHelper.TABLE_WORD_NAME, contentValues, null, null);
+        writableDatabase.close();
+    }
+
     public Verb[] getAllActiveVerbs(Language language) {
         Cursor cursor = dbHelper.getReadableDatabase().
                 rawQuery("SELECT " + DBHelper.TABLE_WORD_NAME + "." + DBHelper.TABLE_WORD_KEY_ID + ", "

@@ -1,46 +1,65 @@
 <resources>
-    <string name="app_name">GermanVerbs</string>
+    <string name="app_name">German Verbs</string>
     <string name="action_language">Language</string>
+    <string name="chooseLanguageTitle">Choose language</string>
+    <string name="flag_image_description">Flag image</string>
+    <string name="OK">OK</string>
+    <string name="cancel">Cancel</string>
+
     <string name="practice">Practice</string>
     <string name="verbs">Verbs</string>
     <string name="settings">Settings</string>
     <string name="help_btn">Info</string>
-    <string name="flag_image_description">Flag image</string>
-    <string name="chooseLanguageTitle">Choose language</string>
-    <string name="cancel">Cancel</string>
-    <string name="OK">OK</string>
-    <string name="action_search">Search</string>
-    <string name="cards_game_activity_name">Cards game</string>
-    <string name="not_enought_verb_message">Make more verbs active or reduce number of verbs to learn</string>
+
+    <string name="true_false_game_name">True or false</string>
     <string name="cards_game_name">Cards</string>
-    <string name="true_false_game_name">True or False</string>
-    <string name="result_activity_name">Result</string>
+    <string name="type_word_name">Fill the gaps</string>
+    <string name="full_word_type_name">Type a word</string>
+
+    <string name="result_activity_name">Results</string>
+    <string name="result_perfect">Perfect</string>
+    <string name="result_very_good">Excellent</string>
+    <string name="result_good">Good</string>
+    <string name="result_not_good">Average</string>
+    <string name="result_bad">Poor</string>
+    <string name="result_very_bad">Bad</string>
+    <string name="result_awful">Awful</string>
+
+    <string name="not_enought_verb_message">Make more verbs active or reduce number of verbs to learn</string>
     <string name="true_answer_cnt">Right answers: %d</string>
     <string name="false_answer_cnt">Mistakes: %d</string>
     <string name="result_percent">Accuracy: %d </string>
-    <string name="result_perfect">Excellent</string>
-    <string name="result_good">Good</string>
-    <string name="result_very_good">Very good</string>
-    <string name="result_not_good">Not good</string>
-    <string name="result_bad">Bad</string>
-    <string name="result_very_bad">Very bad</string>
-    <string name="result_awful">Awful</string>
-    <string name="true_false_game_false">False</string>
-    <string name="no">NO</string>
     <string name="game_true_false_true">True</string>
+    <string name="true_false_game_false">False</string>
     <string name="yes">YES</string>
-    <string name="true_false_game_activity_name">True or False</string>
+    <string name="no">NO</string>
     <string name="true_false_start">Start</string>
     <string name="true_false_score">Score: %d</string>
     <string name="true_false_multiple">Multiple: %d</string>
     <string name="true_false_record">Top score: %d</string>
-    <string name="type_word_game_activity_name">Type word</string>
-    <string name="type_word">Type word</string>
     <string name="type_word_hint">Type here</string>
     <string name="type_word_button_dsc">check answer</string>
-    <string name="full_type_word_game_activity_name">Type words</string>
+
     <string name="hint_presens">Enter verb in presens</string>
     <string name="hint_prateritum">Enter verb in präteritum</string>
     <string name="hint_perfect">Enter verb in perfect</string>
-    <string name="full_word_type">Full word type</string>
+
+    <!--Preferences-->
+    <string name="select_number_of_words_in_card_game">Number of words in Cards Game</string>
+    <string name="select_number_of_words_in_card_game_key" translatable="false">cards_game_word_count</string>
+    <string name="select_number_of_words_in_fill_gaps_game">Number of words in Fill the Gaps</string>
+    <string name="select_number_of_words_in_fill_gaps_game_key" translatable="false">type_word_game_word_count</string>
+    <string name="select_number_of_words_in_type_word_game">Number of words in Type word</string>
+    <string name="select_number_of_words_in_type_word_game_key" translatable="false">full_type_word_game_word_count</string>
+    <string name="clear_progress">Reset your progress</string>
+    <string name="clear_progress_key" translatable="false">clear_progress</string>
+    <string name="choose_language">Choose language</string>
+    <string name="choose_language_key" translatable="false">choose_language_key</string>
+    <string name="reset">Reset</string>
+    <string name="reset_apply_message">Reset progress of all words?</string>
+    <string name="number_picker_dialog_cards_game">Set number of words in cards game</string>
+    <string name="number_picker_dialog_fill_the_gaps_game">Set number of words in fill the gaps game</string>
+    <string name="number_picker_dialog_type_the_word_game">Set number of words in type words game</string>
+
+    <!--TEMP-->
 </resources>

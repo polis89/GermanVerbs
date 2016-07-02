@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference android:title="@string/select_number_of_words_in_card_game"
+        android:key="@string/select_number_of_words_in_card_game_key"  />
+
+    <Preference android:title="@string/select_number_of_words_in_fill_gaps_game"
+        android:key="@string/select_number_of_words_in_fill_gaps_game_key"  />
+
+    <Preference android:title="@string/select_number_of_words_in_type_word_game"
+        android:key="@string/select_number_of_words_in_type_word_game_key"  />
+
+    <Preference android:title="@string/choose_language"
+        android:key="@string/choose_language_key"        />
+
+    <Preference android:title="@string/clear_progress"
+        android:key="@string/clear_progress_key" />
+
+</PreferenceScreen>

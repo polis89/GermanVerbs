@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.CursorAdapter;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,8 +74,11 @@ public class VerbsFragment extends ListFragment{
 
             String name = cursor.getString(cursor.getColumnIndex(DBHelper.TABLE_WORD_KEY_INFINITIVE));
             String translate = " (" + cursor.getString(cursor.getColumnIndex(language.getNameForDB())) + ")";
+            int nameLength = name.length();
             name += translate;
-            verbName.setText(name);
+            Spannable textSpan = new SpannableString(name);
+            textSpan.setSpan(new RelativeSizeSpan(0.8f), nameLength, name.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            verbName.setText(textSpan);
             int isActive = cursor.getInt(cursor.getColumnIndex(DBHelper.TABLE_WORD_KEY_IS_ACTIVE));
             checkBox.setChecked(isActive == 1);
             String infinitive = cursor.getString(cursor.getColumnIndex(DBHelper.TABLE_WORD_KEY_INFINITIVE));
