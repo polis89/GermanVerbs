@@ -7,86 +7,70 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.CursorAdapter;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import ru.polis.germanverbs.database.DBHelper;
 import ru.polis.germanverbs.database.DBService;
 
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class SettingsFragment extends Fragment {
+    private TextView cardsNumber;
+    private TextView fillGapsNumber;
+    private TextView typoNumber;
 
     public static Fragment getNewInstance() {
         return new SettingsFragment();
     }
 
+    @Nullable
     @Override
-    public void onCreatePreferences(Bundle bundle, String s) {
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.preferences);
-
-        findPreference(getString(R.string.select_number_of_words_in_card_game_key)).
-                setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        showNumberPickerDialog(1);
-                        return true;
-                    }
-                });
-
-        findPreference(getString(R.string.select_number_of_words_in_fill_gaps_game_key)).
-                setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        showNumberPickerDialog(2);
-                        return true;
-                    }
-                });
-
-        findPreference(getString(R.string.select_number_of_words_in_type_word_game_key)).
-                setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        showNumberPickerDialog(3);
-                        return true;
-                    }
-                });
-
-        Preference chooseLanguage = findPreference(getString(R.string.choose_language_key));
-        chooseLanguage.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        view.findViewById(R.id.settings_cards_relative_l).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference) {
+            public void onClick(View v) {
+                showNumberPickerDialog(1);
+            }
+        });
+        view.findViewById(R.id.settings_fill_gaps_relative_l).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNumberPickerDialog(2);
+            }
+        });
+        view.findViewById(R.id.settings_typo_relative_l).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNumberPickerDialog(3);
+            }
+        });
+        view.findViewById(R.id.settings_language_relative_l).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 ((MainActivity)getActivity()).showChooseLanguageDialog();
-                return true;
             }
         });
-
-        Preference clearProgress = findPreference(getString(R.string.clear_progress_key));
-        clearProgress.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        view.findViewById(R.id.settings_reset_relative_l).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setMessage(R.string.reset_apply_message);
-                builder.setNegativeButton(R.string.cancel,null);
-                builder.setPositiveButton(R.string.reset, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new ClearProgressAsyncTask(DBService.getInstance(getActivity())).execute();
-                    }
-                });
-                builder.show();
-                return true;
+            public void onClick(View v) {
+                new ClearProgressAsyncTask(DBService.getInstance(getActivity())).execute();
             }
         });
+        cardsNumber = (TextView)view.findViewById(R.id.settings_cards_number);
+        fillGapsNumber = (TextView)view.findViewById(R.id.settings_fill_the_gaps_number);
+        typoNumber = (TextView)view.findViewById(R.id.settings_type_words_number);
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE);
+        cardsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 15));
+        fillGapsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 15));
+        typoNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 15));
+        return view;
     }
 
     // @param number_of_preference
@@ -137,6 +121,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     SharedPreferences.Editor edit = getActivity().getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE).edit();
                     edit.putInt(preference_name_final, picker_num);
                     edit.apply();
+                    switch (preference_name_final){
+                        case MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT:
+                            cardsNumber.setText("" + picker_num);
+                            break;
+                        case MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT:
+                            fillGapsNumber.setText("" + picker_num);
+                            break;
+                        case MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT:
+                            typoNumber.setText("" + picker_num);
+                            break;
+                    }
                 }
             }
         });

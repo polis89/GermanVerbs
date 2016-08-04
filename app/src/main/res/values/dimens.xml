@@ -15,4 +15,9 @@
     <dimen name="settings_txt_size">18sp</dimen>
     <dimen name="toolbar_shadow">4dp</dimen>
     <dimen name="type_word_answer_height">45dp</dimen>
+    <dimen name="settings_item_height">42dp</dimen>
+    <dimen name="settings_card_view_padding">10dp</dimen>
+    <dimen name="settings_linear_lay_games_margin">22dp</dimen>
+    <dimen name="settings_numbers_right_padding">12dp</dimen>
+    <dimen name="drawable_remove_ad_padding">12dp</dimen>
 </resources>

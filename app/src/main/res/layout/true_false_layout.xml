@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/true_false_game_false"
+                    android:contentDescription="@string/game_false"
                     android:textColor="@color/white"
                     android:text="@string/no"
                     android:textSize="@dimen/true_false_btn_text_size"
@@ -168,7 +168,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/game_true_false_true"
+                    android:contentDescription="@string/game_true"
                     android:text="@string/yes"
                     android:textColor="@color/white"
                     android:textSize="@dimen/true_false_btn_text_size"

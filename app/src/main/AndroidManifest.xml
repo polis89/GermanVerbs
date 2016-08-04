@@ -20,23 +20,23 @@
         </activity>
 
         <activity android:name=".games.CardsGameActivity"
-            android:label="@string/cards_game_name"
+            android:label="@string/cards"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
 
         <activity android:name=".games.TrueFalseGameActivity"
-            android:label="@string/true_false_game_name"
+            android:label="@string/true_or_false"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
 
         <activity android:name=".games.TypeWordGameActivity"
-            android:label="@string/type_word_name"
+            android:label="@string/fill_the_gaps"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".games.FullWordTypeGameActivity"
-            android:label="@string/full_word_type_name"
+            android:label="@string/type_words"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
