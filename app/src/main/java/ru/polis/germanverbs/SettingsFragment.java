@@ -11,9 +11,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ru.polis.germanverbs.database.DBHelper;
@@ -31,37 +33,53 @@ public class SettingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        SettingsOnTouchListener onTouchListener = new SettingsOnTouchListener();
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        view.findViewById(R.id.settings_cards_relative_l).setOnClickListener(new View.OnClickListener() {
+        RelativeLayout viewCardsRelaytive = (RelativeLayout) view.findViewById(R.id.settings_cards_relative_l);
+        viewCardsRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showNumberPickerDialog(1);
             }
         });
-        view.findViewById(R.id.settings_fill_gaps_relative_l).setOnClickListener(new View.OnClickListener() {
+        viewCardsRelaytive.setOnTouchListener(onTouchListener);
+
+        RelativeLayout viewFillTheGapsRelaytive = (RelativeLayout) view.findViewById(R.id.settings_fill_gaps_relative_l);
+        viewFillTheGapsRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showNumberPickerDialog(2);
             }
         });
-        view.findViewById(R.id.settings_typo_relative_l).setOnClickListener(new View.OnClickListener() {
+        viewFillTheGapsRelaytive.setOnTouchListener(onTouchListener);
+
+        RelativeLayout viewTypeWordsRelaytive = (RelativeLayout) view.findViewById(R.id.settings_typo_relative_l);
+        viewTypeWordsRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showNumberPickerDialog(3);
             }
         });
-        view.findViewById(R.id.settings_language_relative_l).setOnClickListener(new View.OnClickListener() {
+        viewTypeWordsRelaytive.setOnTouchListener(onTouchListener);
+
+        RelativeLayout viewLanguageRelaytive = (RelativeLayout) view.findViewById(R.id.settings_language_relative_l);
+        viewLanguageRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).showChooseLanguageDialog();
             }
         });
-        view.findViewById(R.id.settings_reset_relative_l).setOnClickListener(new View.OnClickListener() {
+        viewLanguageRelaytive.setOnTouchListener(onTouchListener);
+
+        RelativeLayout viewResetRelaytive = (RelativeLayout) view.findViewById(R.id.settings_reset_relative_l);
+        viewResetRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ClearProgressAsyncTask(DBService.getInstance(getActivity())).execute();
+                showResetProgressConfirm();
             }
         });
+        viewResetRelaytive.setOnTouchListener(onTouchListener);
+
         cardsNumber = (TextView)view.findViewById(R.id.settings_cards_number);
         fillGapsNumber = (TextView)view.findViewById(R.id.settings_fill_the_gaps_number);
         typoNumber = (TextView)view.findViewById(R.id.settings_type_words_number);
@@ -71,6 +89,20 @@ public class SettingsFragment extends Fragment {
         fillGapsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 15));
         typoNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 15));
         return view;
+    }
+
+    private void showResetProgressConfirm() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.reset_apply_message);
+        builder.setPositiveButton(R.string.reset, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                new ClearProgressAsyncTask(DBService.getInstance(getActivity())).execute();
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
     }
 
     // @param number_of_preference
@@ -158,6 +190,20 @@ public class SettingsFragment extends Fragment {
             SQLiteDatabase writableDatabase = DBService.getInstance(getActivity()).getDBHelper().getReadableDatabase();
             VerbsFragment verbsFragment = ((MainActivity) getActivity()).verbsFragment;
             ((CursorAdapter)verbsFragment.getListAdapter()).changeCursor(writableDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null));
+        }
+    }
+
+    private class SettingsOnTouchListener implements View.OnTouchListener{
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            int action = event.getAction();
+//                Toast.makeText(getActivity(), "Action: " + action, Toast.LENGTH_SHORT).show();
+            if(action == MotionEvent.ACTION_DOWN){
+                v.setBackgroundColor(getResources().getColor(R.color.colorViewTouch));
+            } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL){
+                v.setBackgroundColor(getResources().getColor(R.color.colorTextOrIcons));
+            }
+            return false;
         }
     }
 }

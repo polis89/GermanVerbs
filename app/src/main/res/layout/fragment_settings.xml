@@ -42,7 +42,8 @@
                     android:layout_marginLeft="@dimen/settings_linear_lay_games_margin"
                     android:layout_marginStart="@dimen/settings_linear_lay_games_margin"
                     android:layout_marginRight="@dimen/settings_linear_lay_games_margin"
-                    android:layout_marginEnd="@dimen/settings_linear_lay_games_margin">
+                    android:layout_marginEnd="@dimen/settings_linear_lay_games_margin"
+                    android:clickable="true">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -50,7 +51,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:paddingLeft="@dimen/settings_numbers_right_padding"
+                        android:paddingStart="@dimen/settings_numbers_right_padding"/>
                     <TextView
                         android:id="@+id/settings_cards_number"
                         android:layout_width="wrap_content"
@@ -85,7 +88,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:paddingLeft="@dimen/settings_numbers_right_padding"
+                        android:paddingStart="@dimen/settings_numbers_right_padding"/>
                     <TextView
                         android:id="@+id/settings_fill_the_gaps_number"
                         android:layout_width="wrap_content"
@@ -120,7 +125,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:paddingLeft="@dimen/settings_numbers_right_padding"
+                        android:paddingStart="@dimen/settings_numbers_right_padding"/>
                     <TextView
                         android:id="@+id/settings_type_words_number"
                         android:layout_width="wrap_content"
@@ -171,7 +178,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:paddingLeft="@dimen/settings_numbers_right_padding"
+                        android:paddingStart="@dimen/settings_numbers_right_padding"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -206,7 +215,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:paddingLeft="@dimen/settings_numbers_right_padding"
+                        android:paddingStart="@dimen/settings_numbers_right_padding"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
