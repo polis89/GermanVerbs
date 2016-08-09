@@ -33,6 +33,8 @@ public class ResultActivity extends AppCompatActivity {
 
     public static final String VERBS_INTENT_EXTRA = "verbs_for_result";
     public static final String RESULT_INTENT_EXTRA = "result_extra";
+    public static final String TRUE_FALSE_RECORD_INTENT_EXTRA = "record";
+    public static final String TRUE_FALSE_SCORE_INTENT_EXTRA = "score";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class ResultActivity extends AppCompatActivity {
             verbs[i] = (Verb) parcelableArrayExtraVerbs[i];
             results[i] = (Result) parcelableArrayExtraResult[i];
         }
+        int score = getIntent().getIntExtra(TRUE_FALSE_SCORE_INTENT_EXTRA, -1);
+        int topScore = getIntent().getIntExtra(TRUE_FALSE_RECORD_INTENT_EXTRA, -1);
 
         //Вычисляем количество правильных и не правильных ответов
         int trueAnsCnt = 0;
@@ -69,12 +73,22 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         //Заплонение Вью информацией
+        TextView scoreTextView = (TextView) findViewById(R.id.resultYourScoreTextView);
+        TextView recordTextView = (TextView) findViewById(R.id.resultTopScoreTextView);
         TextView trueAnsTextView = (TextView) findViewById(R.id.rightAnswerTextView);
         TextView falseAnsTextView = (TextView) findViewById(R.id.falseAnswerTextView);
         TextView percentTextView = (TextView) findViewById(R.id.resultPercentAnswerTextView);
         trueAnsTextView.setText(getResources().getString(R.string.true_answer_cnt, trueAnsCnt));
         falseAnsTextView.setText(getResources().getString(R.string.false_answer_cnt, falseAnsCnt));
         percentTextView.setText(getResources().getString(R.string.result_percent, (int)resultInPercent) + "%");
+        //Определяем нужна ли инфа о рекорде, если из труфолс активити
+        if(score != -1){
+            scoreTextView.setText(getResources().getString(R.string.true_false_your_score, score));
+            recordTextView.setText(getResources().getString(R.string.true_false_record, topScore));
+        } else {
+            scoreTextView.setHeight(0);
+            recordTextView.setHeight(0);
+        }
 
         //Установка значения ProgressBar
         RoundCornerProgressBar progressBar = (RoundCornerProgressBar) findViewById(R.id.resultProgressBar);

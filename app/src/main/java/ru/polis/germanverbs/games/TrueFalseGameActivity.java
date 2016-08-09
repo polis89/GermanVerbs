@@ -129,6 +129,8 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
         intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
         intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
+        intent.putExtra(ResultActivity.TRUE_FALSE_RECORD_INTENT_EXTRA, record);
+        intent.putExtra(ResultActivity.TRUE_FALSE_SCORE_INTENT_EXTRA, score);
         startActivity(intent);
         finish();
     }

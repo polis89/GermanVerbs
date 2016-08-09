@@ -20,4 +20,6 @@
     <dimen name="settings_linear_lay_games_margin">22dp</dimen>
     <dimen name="settings_numbers_right_padding">12dp</dimen>
     <dimen name="drawable_remove_ad_padding">12dp</dimen>
+    <dimen name="result_accuracy_text_size">18sp</dimen>
+    <dimen name="result_large_text_size">26sp</dimen>
 </resources>

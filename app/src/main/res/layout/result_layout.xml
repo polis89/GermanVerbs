@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:textSize="@dimen/result_large_text_size"
             android:id="@+id/resultTextView"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -39,7 +39,7 @@
 
         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:layout_width="match_parent"
-            android:layout_height="16dp"
+            android:layout_height="24dp"
             android:id="@+id/resultProgressBar"
             android:layout_below="@+id/resultTextView"
             android:layout_marginTop="32dp"
@@ -56,11 +56,30 @@
         </com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar>
 
         <TextView
+            android:layout_marginTop="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultYourScoreTextView"
+            android:layout_below="@+id/resultProgressBar"
+            android:textSize="@dimen/result_accuracy_text_size"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultTopScoreTextView"
+            android:layout_below="@+id/resultYourScoreTextView"
+            android:textSize="@dimen/result_accuracy_text_size"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/resultPercentAnswerTextView"
-            android:layout_below="@+id/resultProgressBar"
-            android:layout_marginTop="32dp"
+            android:layout_below="@+id/resultTopScoreTextView"
+            android:textSize="@dimen/result_accuracy_text_size"
+            android:layout_marginTop="8dp"
             android:text="@string/result_percent"
             android:layout_centerHorizontal="true"/>
 
@@ -69,6 +88,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/rightAnswerTextView"
             android:layout_below="@+id/resultPercentAnswerTextView"
+            android:textSize="@dimen/result_accuracy_text_size"
             android:layout_marginTop="8dp"
             android:text="@string/true_answer_cnt"
             android:layout_centerHorizontal="true"/>
@@ -78,6 +98,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/falseAnswerTextView"
             android:layout_below="@+id/rightAnswerTextView"
+            android:textSize="@dimen/result_accuracy_text_size"
             android:layout_marginTop="8dp"
             android:text="@string/false_answer_cnt"
             android:layout_centerHorizontal="true"/>

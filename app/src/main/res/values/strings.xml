@@ -36,6 +36,7 @@
     <string name="true_false_start">Start</string>
     <string name="true_false_score">Score: %d</string>
     <string name="true_false_multiple">Multiple: %d</string>
+    <string name="true_false_your_score">Your score: %d</string>
     <string name="true_false_record">Top score: %d</string>
     <string name="type_word_hint">Type here</string>
     <string name="type_word_button_dsc">check answer</string>
@@ -54,9 +55,9 @@
     <string name="choose_language_key" translatable="false">choose_language_key</string>
     <string name="reset">Reset progress</string>
     <string name="reset_apply_message">Reset progress of all words?</string>
-    <string name="number_picker_dialog_cards_game">Set number of words in cards exercise</string>
-    <string name="number_picker_dialog_fill_the_gaps_game">Set number of words in fill the gaps exercise</string>
-    <string name="number_picker_dialog_type_the_word_game">Set number of words in type words exercise</string>
+    <string name="number_picker_dialog_cards_game">Amount of words in Cards</string>
+    <string name="number_picker_dialog_fill_the_gaps_game">Amount of words in Fill the Gaps</string>
+    <string name="number_picker_dialog_type_the_word_game">Amount of words in Type words</string>
     <string name="words_in_exercise">Words in exercise</string>
     <string name="remove_ads">Remove Ads</string>
     <string name="main_settings">Main settings</string>
