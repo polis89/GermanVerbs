@@ -197,7 +197,6 @@ public class SettingsFragment extends Fragment {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             int action = event.getAction();
-//                Toast.makeText(getActivity(), "Action: " + action, Toast.LENGTH_SHORT).show();
             if(action == MotionEvent.ACTION_DOWN){
                 v.setBackgroundColor(getResources().getColor(R.color.colorViewTouch));
             } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL){

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.CursorAdapter;
@@ -33,14 +35,26 @@ public class VerbsFragment extends ListFragment{
     private Language language;
     private Cursor cursor;
     private SQLiteDatabase sqLiteDatabase;
+    private static VerbsFragment verbsFragment;
 
     public static Fragment getNewInstance() {
-        return new VerbsFragment();
+        Log.i(LOG_TAG, "getNewInstance");
+        if(verbsFragment == null){
+            return new VerbsFragment();
+        } else {
+            return verbsFragment;
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(LOG_TAG, "onCreate: " + getId());
     }
 
     //Метод для установки адаптера глаголов, если первый - запуск то запускается setAdapter() после заполения БД
     public void setAdapter(Context context) {
-        Log.i(LOG_TAG, "setAdapter");
+        Log.i(LOG_TAG, "setAdapter " + getId());
         language = ((MainActivity)context).language;
         sqLiteDatabase = DBService.getInstance(context).getDBHelper().getReadableDatabase();
         cursor = sqLiteDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null);
@@ -49,6 +63,7 @@ public class VerbsFragment extends ListFragment{
 
     //Вызов при первом запуске после заполения БД
     public void setAdapter() {
+        Log.i(LOG_TAG, "setAdapterFirstLaunch " + getId());
         setAdapter(getActivity());
     }
 
@@ -132,5 +147,23 @@ public class VerbsFragment extends ListFragment{
                 changeCursor(writableDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null));
             }
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG, "onStart " + getId());
+        if(!((MainActivity)getActivity()).firstStart){
+            setAdapter(getActivity());
+        } else {
+            Log.i(LOG_TAG, "First start");
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        setListAdapter(null);
+        Log.i(LOG_TAG, "onStop " + getId());
     }
 }

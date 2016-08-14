@@ -19,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -47,14 +46,16 @@ public class MainActivity extends AppCompatActivity {
     private BottomBar bottomBar;
 
     public VerbsFragment verbsFragment;
+    boolean firstStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(LOG_TAG, "onCreate");
         super.onCreate(savedInstanceState);
 
         //Проверка на первый запуск
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
-        boolean firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
+        firstStart = sharedPreferences.getBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, true);
 
         //Init verbsFragment
         verbsFragment = (VerbsFragment) VerbsFragment.getNewInstance();
@@ -144,9 +145,6 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuTabReSelected(@IdRes int menuItemId) {
             }
         });
-        if(!firstStart){
-            verbsFragment.setAdapter(this);
-        }
     }
 
     private void firstStart() {
@@ -210,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int id = (radioGroup.getCheckedRadioButtonId() - 1) % Language.values().length;
-                Toast.makeText(getApplicationContext(), "checked: " + id, Toast.LENGTH_SHORT).show();
                 Language newLanguage = Language.values()[id];
                 if(!newLanguage.equals(language)) {
                     SharedPreferences preference = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
@@ -283,5 +280,17 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             verbsFragment.setAdapter();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(LOG_TAG, "onStop");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG, "onStart");
     }
 }
