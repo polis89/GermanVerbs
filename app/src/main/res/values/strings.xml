@@ -64,5 +64,8 @@
     <string name="language_description">Choose language</string>
     <string name="reset_description">Progress reset</string>
 
+    <!--Ad-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
     <!--TEMP-->
 </resources>

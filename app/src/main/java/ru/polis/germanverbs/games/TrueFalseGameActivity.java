@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Random;
 
@@ -26,8 +28,8 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     public static final String LOG = "TrueFalseGameActivity";
     public static final int PLAY_TIME = 45;
     public static final int START_SCORE_STEP = 1;
-    public static final int RIGHT_ANSWER_PROGRESS = 2;
-    public static final int FALSE_ANSWER_PROGRESS = -2;
+    public static final int RIGHT_ANSWER_PROGRESS = 5;
+    public static final int FALSE_ANSWER_PROGRESS = -3;
 
     public static final String SHARED_PREF = "prefs";
     public static final String SHARED_PREF_TRUE_FALSE_RECORD = "record";
@@ -60,6 +62,11 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Add ads
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         //Достаем глаголы из интента
         Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);

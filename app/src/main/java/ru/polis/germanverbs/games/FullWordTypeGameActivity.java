@@ -14,10 +14,12 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Random;
 
@@ -28,7 +30,7 @@ import ru.polis.germanverbs.objects.Verb;
 
 public class FullWordTypeGameActivity extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener {
     public static final String LOG_TAG = "FullWordTypeGameActiv";
-    private static final int TRUE_ANSWER_PROGRESS = 5; //Очки прогресса за правильный ответ
+    private static final int TRUE_ANSWER_PROGRESS = 30; //Очки прогресса за правильный ответ
     private static final int FALSE_ANSWER_PROGRESS = -10; //Очки прогресса за не правильный ответ
     private static final int RIGHT_ANSWER_DELAY_MS = 1200;
     private static final String EMPTY_POSITION_STRING = ".....";
@@ -54,6 +56,11 @@ public class FullWordTypeGameActivity extends AppCompatActivity implements TextV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Add ads
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         tranlateTextView = (TextView) findViewById(R.id.type_word_translate_text_view);
         questionTextView = (TextView) findViewById(R.id.type_word_question_text_view);
         answerEditText = (EditText) findViewById(R.id.type_word_answer_edit_text);
@@ -61,9 +68,6 @@ public class FullWordTypeGameActivity extends AppCompatActivity implements TextV
         btnImageView = (ImageView) findViewById(R.id.type_word_answer_button);
 
         findViewById(R.id.type_word_answer_button).setOnClickListener(this);
-
-        //Show keyboard
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
         //Достаем глаголы из интента
         Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
