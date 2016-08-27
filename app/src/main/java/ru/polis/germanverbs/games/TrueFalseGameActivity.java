@@ -114,6 +114,17 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Проверка если активность запушена после остановки - продолжение игры
+        int time_on_start = Integer.parseInt(chronometerView.getText().toString());
+        if(time_on_start != Integer.parseInt(String.valueOf(PLAY_TIME))){
+            time = new TimerAsyncTask(time_on_start);
+            time.execute();
+        }
+    }
+
     //Called after user touch screen to start game
     private void startGame() {
         relativeLayout.setOnClickListener(null); //Delete Listener from Layout
@@ -207,7 +218,11 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     //Called after true answer
     private void addRightAnswer() {
         score += scoreStep;
-        scoreStep *= 2;
+        if(scoreStep != 1){
+            scoreStep *= 1.5;
+        } else{
+            scoreStep = 2;
+        }
         results[presentVerbNum].addTrueAnswer();
         results[presentVerbNum].addProgress(RIGHT_ANSWER_PROGRESS);
         recordProgressBar.setProgress(score);

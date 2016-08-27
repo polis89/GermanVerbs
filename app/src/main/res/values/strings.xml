@@ -14,6 +14,11 @@
     <string name="verbs">Verbs</string>
     <string name="settings">Settings</string>
     <string name="help_btn">Info</string>
+    <string name="info_cards">Make a verb, by selecting one of the offered answers.</string>
+    <string name="info_true_or_false">Speed competition. Is this verb correct? Check it as fast as possible.</string>
+    <string name="info_fill_the_gaps">You see the verb, but one place is empty. Just fill this gap.</string>
+    <string name="info_type_word">Type full verb conjugations.</string>
+    <string name="hint_letters">Hint: to type letters Ä-Ö-Ü-ß make long tap on A-O-U-S (Use english keyboard)</string>
 
     <string name="true_or_false">True or false</string>
     <string name="cards">Cards</string>

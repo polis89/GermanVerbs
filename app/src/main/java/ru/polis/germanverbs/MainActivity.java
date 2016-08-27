@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT = "type_word_game_word_count";
     public static final String SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT = "full_type_word_game_word_count";
 
+    public static final int SHARED_PREF_DEFAULT_CARDS = 20;
+    public static final int SHARED_PREF_DEFAULT_FILL_THE_GAPS = 15;
+    public static final int SHARED_PREF_DEFAULT_TYPE_WORDS = 10;
+
     public Language language;
     private BottomBar bottomBar;
 
@@ -173,12 +177,17 @@ public class MainActivity extends AppCompatActivity {
         String langLocale = getResources().getConfiguration().locale.getLanguage();
         if(langLocale == null) langLocale = "en"; //Если нет установленного языка - выбор английского
         language = Language.getLanguageByLocale(langLocale);
+        if(language == null) { //Если язык не поддерживается приложением - по-умолчанию ставин английский
+            language = Language.ENG;
+            langLocale = "en";
+        }
         SharedPreferences.Editor edit = getSharedPreferences(SHARED_PREF, MODE_PRIVATE).edit();
         //Запись языка в SP
         edit.putString(SHARED_PREF_LANGUAGE_TAG, langLocale);
         //Запись в SharedPrefs настроек по-умолчанию
-        edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
-        edit.putInt(SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 4);
+        edit.putInt(SHARED_PREF_CARDS_GAME_WORD_COUNT, SHARED_PREF_DEFAULT_CARDS);
+        edit.putInt(SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, SHARED_PREF_DEFAULT_FILL_THE_GAPS);
+        edit.putInt(SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, SHARED_PREF_DEFAULT_TYPE_WORDS);
         //Запись в SharedPrefs что первый старт уже был
         edit.putBoolean(SHARED_PREF_FIRST_LAUNCH_TAG, false).apply();
     }
