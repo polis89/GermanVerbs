@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -201,11 +200,5 @@ public class TypeWordGameActivity extends AppCompatActivity implements TextView.
                     break;
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "onBackPressed", Toast.LENGTH_SHORT).show();
-        super.onBackPressed();
     }
 }

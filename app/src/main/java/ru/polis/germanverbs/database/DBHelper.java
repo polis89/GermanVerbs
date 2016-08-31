@@ -52,6 +52,8 @@ public class DBHelper extends SQLiteOpenHelper{
                 TABLE_WORD_KEY_PERFEKT + " text NOT NULL, " +
                 Language.RUS.getNameForDB() + " text NOT NULL, " +
                 Language.ENG.getNameForDB() + " text NOT NULL, " +
+                Language.ESP.getNameForDB() + " text NOT NULL, " +
+                Language.FRA.getNameForDB() + " text NOT NULL, " +
                 TABLE_WORD_KEY_PROGRESS + " INTEGER, " +
                 TABLE_WORD_KEY_IS_ACTIVE + " INTEGER)");
         db.execSQL("CREATE TABLE " + TABLE_MISTAKE_NAME + " ( " +

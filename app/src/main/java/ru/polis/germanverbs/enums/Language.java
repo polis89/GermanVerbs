@@ -9,7 +9,9 @@ import ru.polis.germanverbs.R;
  */
 public enum Language {
     ENG("eng", "English", "en", R.drawable.united_kingdom),
-    RUS("rus", "Русский", "ru", R.drawable.russia);
+    RUS("rus", "Русский", "ru", R.drawable.russia),
+    ESP("esp", "Español", "es", R.drawable.spain),
+    FRA("fra", "Français", "fr", R.drawable.france);
 
     String nameForDB; //Имя столбца в БД
     String description; //Описание на человеческом
