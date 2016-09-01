@@ -42,7 +42,6 @@ public class FullWordTypeGameActivity extends AbstractGameActivity implements Te
 
         //Add ads
         layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_full_type_words);
-        loadAd();
 
         tranlateTextView = (TextView) findViewById(R.id.type_word_translate_text_view);
         questionTextView = (TextView) findViewById(R.id.type_word_question_text_view);

@@ -54,7 +54,6 @@ public class TrueFalseGameActivity extends AbstractGameActivity implements View.
 
         //Add ads
         layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_true_false);
-        loadAd();
 
         //Достаем глаголы из интента
         getDataFromIntent();

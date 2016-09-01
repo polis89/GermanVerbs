@@ -20,12 +20,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -80,17 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Развертка layout
         setContentView(R.layout.activity_main);
-        //Проверка, если нет интернета, отключть AdMob
-        if(!isOnline(this)){
-            Log.i(LOG_TAG, "Not online");
-            AdView adV = (AdView)findViewById(R.id.adView);
-            LinearLayout ll = (LinearLayout) findViewById(R.id.main_act_linear_layout);
-            ll.removeView(adV);
-        }else {
-            AdView mAdView = (AdView) findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

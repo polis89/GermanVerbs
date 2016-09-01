@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import ru.polis.germanverbs.MainActivity;
 import ru.polis.germanverbs.R;
@@ -47,10 +45,6 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         //Достаем глаголы и результаты из интента
         Parcelable[] parcelableArrayExtraVerbs = getIntent().getParcelableArrayExtra(VERBS_INTENT_EXTRA);

@@ -8,11 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-
 import java.util.Random;
 
 import ru.polis.germanverbs.PracticeFragment;
@@ -28,7 +23,6 @@ public abstract class AbstractGameActivity extends AppCompatActivity {
     protected Result[] results; //Результаты изучения глагола
     protected int presentVerbNum; //номер текущего глагола
     protected LinearLayout layoutWithAdView;
-    protected InterstitialAd mInterstitialAd;
 
     abstract protected void startResultActivity();
 
@@ -43,27 +37,6 @@ public abstract class AbstractGameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    protected void loadAd(){
-        mInterstitialAd = new InterstitialAd(this);
-        AdView adView = (AdView) layoutWithAdView.findViewById(R.id.adView);
-        if(isOnline(this)){
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-            mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_ad_unit_id));
-            AdRequest ar = new AdRequest.Builder().build();
-            mInterstitialAd.loadAd(ar);
-            mInterstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    super.onAdClosed();
-                    startResultActivity();
-                }
-            });
-        }else{
-            layoutWithAdView.removeView(adView);
-        }
     }
 
     protected void getDataFromIntent(){
@@ -87,10 +60,6 @@ public abstract class AbstractGameActivity extends AppCompatActivity {
     }
 
     protected void onStopLesson(){
-        if(mInterstitialAd.isLoaded()){
-            mInterstitialAd.show();
-        } else{
-            startResultActivity();
-        }
+        startResultActivity();
     }
 }

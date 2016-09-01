@@ -63,7 +63,6 @@ public class CardsGameActivity extends AbstractGameActivity{
 
         //Add ads
         layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_cards_game);
-        loadAd();
 
         var1CardView = (CardView) findViewById(R.id.variant1_card_view);
         var2CardView = (CardView) findViewById(R.id.variant2_card_view);

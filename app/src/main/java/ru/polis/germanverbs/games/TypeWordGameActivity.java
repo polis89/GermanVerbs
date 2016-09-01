@@ -44,7 +44,6 @@ public class TypeWordGameActivity extends AbstractGameActivity implements TextVi
 
         //Add ads
         layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_type_word);
-        loadAd();
 
         questionTextView = (TextView) findViewById(R.id.type_word_question_text_view);
         answerEditText = (EditText) findViewById(R.id.type_word_answer_edit_text);

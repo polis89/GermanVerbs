@@ -237,36 +237,6 @@
                     </RelativeLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
-            <!--Remove Ad-->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/settings_item_height"
-                    android:layout_margin="@dimen/settings_card_view_padding" >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/remove_ads"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:textSize="18sp"
-                        android:textAppearance="?android:attr/textAppearanceButton"
-                        android:drawableRight="@drawable/block_ads"
-                        android:drawableEnd="@drawable/block_ads"
-                        android:drawableLeft="@drawable/block_ads"
-                        android:drawableStart="@drawable/block_ads"
-                        android:drawablePadding="@dimen/drawable_remove_ad_padding"/>
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
         </LinearLayout>
 
     </ScrollView>
