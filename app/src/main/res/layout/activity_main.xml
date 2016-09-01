@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="ru.polis.germanverbs.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/main_act_linear_layout">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,7 +18,8 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <View
             android:layout_width="match_parent"
@@ -30,5 +32,13 @@
             android:id="@+id/pagerMain"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </FrameLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/adView"
+        android:layout_gravity="center_horizontal"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id"/>
 
 </LinearLayout>

@@ -85,9 +85,9 @@ public class SettingsFragment extends Fragment {
         typoNumber = (TextView)view.findViewById(R.id.settings_type_words_number);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE);
-        cardsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 15));
-        fillGapsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 15));
-        typoNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 15));
+        cardsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_CARDS));
+        fillGapsNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_FILL_THE_GAPS));
+        typoNumber.setText("" + sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_TYPE_WORDS));
         return view;
     }
 
@@ -116,17 +116,17 @@ public class SettingsFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE);
         switch (number_of_preference){
             case 1:
-                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 15);
+                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_CARDS);
                 dialog_title_resours_id = R.string.number_picker_dialog_cards_game;
                 preference_name = MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT;
                 break;
             case 2:
-                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 15);
+                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT,  MainActivity.SHARED_PREF_DEFAULT_FILL_THE_GAPS);
                 dialog_title_resours_id = R.string.number_picker_dialog_fill_the_gaps_game;
                 preference_name = MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT;
                 break;
             case 3:
-                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 15);
+                value_of_preference = sharedPreferences.getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_TYPE_WORDS);
                 dialog_title_resours_id = R.string.number_picker_dialog_type_the_word_game;
                 preference_name = MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT;
                 break;

@@ -24,8 +24,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_weight="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,5 +116,13 @@
             android:onClick="onFabClick"/>
 
     </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/adView"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id"/>
 
 </LinearLayout>

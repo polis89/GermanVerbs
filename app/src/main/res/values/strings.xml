@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">German Verbs</string>
+    <string name="app_name" translatable="false">German Verbs</string>
     <string name="action_language">Language</string>
     <string name="chooseLanguageTitle">Choose language</string>
     <string name="flag_image_description">Flag</string>
@@ -14,6 +14,11 @@
     <string name="verbs">Verbs</string>
     <string name="settings">Settings</string>
     <string name="help_btn">Info</string>
+    <string name="info_cards">Make a verb, by selecting one of the offered answers.</string>
+    <string name="info_true_or_false">Speed competition. Is this verb correct? Check it as fast as possible.</string>
+    <string name="info_fill_the_gaps">You see the verb, but one place is empty. Just fill this gap.</string>
+    <string name="info_type_word">Type full verb conjugations.</string>
+    <string name="hint_letters">Hint: to type letters Ä-Ö-Ü-ß make long tap on A-O-U-S (Use english keyboard)</string>
 
     <string name="true_or_false">True or false</string>
     <string name="cards">Cards</string>
@@ -29,7 +34,7 @@
     <string name="result_very_bad">Bad</string>
     <string name="result_awful">Awful</string>
 
-    <string name="not_enought_verb_message">Make more verbs active or reduce number of verbs to learn</string>
+    <string name="not_enought_verb_message">not enoughMake more verbs active or reduce number of verbs to learn</string>
     <string name="true_answer_cnt">Right answers: %d</string>
     <string name="false_answer_cnt">Mistakes: %d</string>
     <string name="result_percent">Accuracy: %d </string>
@@ -64,5 +69,7 @@
     <string name="language_description">Choose language</string>
     <string name="reset_description">Progress reset</string>
 
-    <!--TEMP-->
+    <!--Ad-->
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

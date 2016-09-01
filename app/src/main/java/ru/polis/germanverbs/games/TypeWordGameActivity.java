@@ -3,10 +3,7 @@ package ru.polis.germanverbs.games;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -14,44 +11,40 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.PracticeFragment;
 import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
 
-public class TypeWordGameActivity extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener {
+public class TypeWordGameActivity extends AbstractGameActivity implements TextView.OnEditorActionListener, View.OnClickListener {
     public static final String LOG_TAG = "TypeWordGameActivity";
-    private static final int TRUE_ANSWER_PROGRESS = 6; //Очки прогресса за правильный ответ
-    private static final int FALSE_ANSWER_PROGRESS = -4; //Очки прогресса за не правильный ответ
+    private static final int TRUE_ANSWER_PROGRESS = 10; //Очки прогресса за правильный ответ
+    private static final int FALSE_ANSWER_PROGRESS = -5; //Очки прогресса за не правильный ответ
     private static final int RIGHT_ANSWER_DELAY_MS = 1800;
     private static final String EMPTY_POSITION_STRING = ".....";
 
-    private Verb[] verbs; //Все глаголы для изучения
-    private Result[] results; //Результаты изучения глагола
-    private int presentVerbNum; //номер текущего глагола
     private int empty_place;
+    private boolean pause; //Пауза на время отображения правильного ответа
 
     private TextView questionTextView;
     private EditText answerEditText;
     private ImageView btnImageView;
-
-    private boolean pause; //Пауза на время отображения правильного ответа
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.type_word_game_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addToolbar();
+
+        //Add ads
+        layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_type_word);
+        loadAd();
 
         questionTextView = (TextView) findViewById(R.id.type_word_question_text_view);
         answerEditText = (EditText) findViewById(R.id.type_word_answer_edit_text);
@@ -60,26 +53,11 @@ public class TypeWordGameActivity extends AppCompatActivity implements TextView.
 
         findViewById(R.id.type_word_answer_button).setOnClickListener(this);
 
-        //Show keyboard
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
         //Достаем глаголы из интента
-        Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
-        verbs = new Verb[parcelableArrayExtra.length];
-        results = new Result[parcelableArrayExtra.length];
-        for (int i = 0; i < parcelableArrayExtra.length; i++) {
-            verbs[i] = (Verb) parcelableArrayExtra[i];
-            results[i] = new Result();
-        }
+        getDataFromIntent();
 
         //Перемешивание глаголов
-        Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < verbs.length; i++) {
-            int rndInt = random.nextInt(verbs.length);
-            Verb temp = verbs[i];
-            verbs[i] = verbs[rndInt];
-            verbs[rndInt] = temp;
-        }
+        mixVerbs();
 
         //Отобразить первый глагол
         nextVerb();
@@ -98,12 +76,16 @@ public class TypeWordGameActivity extends AppCompatActivity implements TextView.
             questionTextView.setText(getQuestionString(empty_place));
         } else {
             //Старт активити с результатом
-            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-            intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
-            intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
-            startActivity(intent);
-            finish();
+            onStopLesson();
         }
+    }
+
+    protected void startResultActivity() {
+        Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+        intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
+        intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
+        startActivity(intent);
+        finish();
     }
 
     private String getQuestionString(int empty_place) {

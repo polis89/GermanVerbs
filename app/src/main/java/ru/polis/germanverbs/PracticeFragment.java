@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,7 +79,7 @@ public class PracticeFragment extends Fragment{
                 case R.id.cards_game_view:
                     intent = new Intent(activity, CardsGameActivity.class);
                     verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
-                            .getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, 4);
+                            .getInt(MainActivity.SHARED_PREF_CARDS_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_CARDS);
                     try {
                         randomVerbs = dbService.getRandomVerbs(verbCount, ((MainActivity)activity).language);
                         intent.putExtra(RANDOM_VERB_INTENT_EXTRA, randomVerbs);
@@ -97,7 +98,7 @@ public class PracticeFragment extends Fragment{
                 case R.id.card_view_type_word:
                     intent = new Intent(activity, TypeWordGameActivity.class);
                     verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
-                            .getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, 4);
+                            .getInt(MainActivity.SHARED_PREF_TYPE_WORD_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_FILL_THE_GAPS);
                     try {
                         randomVerbs = dbService.getRandomVerbs(verbCount, ((MainActivity)activity).language);
                         intent.putExtra(RANDOM_VERB_INTENT_EXTRA, randomVerbs);
@@ -109,7 +110,7 @@ public class PracticeFragment extends Fragment{
                 case R.id.card_view_game_type_full_words:
                     intent = new Intent(activity, FullWordTypeGameActivity.class);
                     verbCount = activity.getSharedPreferences(MainActivity.SHARED_PREF, Context.MODE_PRIVATE)
-                            .getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, 4);
+                            .getInt(MainActivity.SHARED_PREF_FULL_TYPE_WORD_GAME_WORD_COUNT, MainActivity.SHARED_PREF_DEFAULT_TYPE_WORDS);
                     try {
                         randomVerbs = dbService.getRandomVerbs(verbCount, ((MainActivity)activity).language);
                         intent.putExtra(RANDOM_VERB_INTENT_EXTRA, randomVerbs);
@@ -119,16 +120,32 @@ public class PracticeFragment extends Fragment{
                     }
                     break;
                 case R.id.help_cards_game:
-                    Toast.makeText(getContext(), "Info Game 1", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                    builder1.setPositiveButton(R.string.OK, null);
+                    builder1.setTitle(R.string.cards);
+                    builder1.setMessage(R.string.info_cards);
+                    builder1.show();
                     break;
                 case R.id.help_true_false_game:
-                    Toast.makeText(getContext(), "Info Game 2", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
+                    builder2.setPositiveButton(R.string.OK, null);
+                    builder2.setTitle(R.string.true_or_false);
+                    builder2.setMessage(R.string.info_true_or_false);
+                    builder2.show();
                     break;
                 case R.id.help_game_3:
-                    Toast.makeText(getContext(), "Info Game 3", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder3 = new AlertDialog.Builder(getContext());
+                    builder3.setPositiveButton(R.string.OK, null);
+                    builder3.setTitle(R.string.fill_the_gaps);
+                    builder3.setMessage(getString(R.string.info_fill_the_gaps) + "\n\n" + getString(R.string.hint_letters));
+                    builder3.show();
                     break;
                 case R.id.help_game_4:
-                    Toast.makeText(getContext(), "Info Game 4", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder4 = new AlertDialog.Builder(getContext());
+                    builder4.setPositiveButton(R.string.OK, null);
+                    builder4.setTitle(R.string.type_words);
+                    builder4.setMessage(getString(R.string.info_type_word) + "\n\n" + getString(R.string.hint_letters));
+                    builder4.show();
                     break;
             }
         }

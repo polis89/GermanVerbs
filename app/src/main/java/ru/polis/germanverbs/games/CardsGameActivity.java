@@ -3,19 +3,16 @@ package ru.polis.germanverbs.games;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.PracticeFragment;
 import ru.polis.germanverbs.R;
 import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
@@ -24,7 +21,7 @@ import ru.polis.germanverbs.objects.Verb;
  *
  * Created by Dmitrii on 07.05.2016.
  */
-public class CardsGameActivity extends AppCompatActivity{
+public class CardsGameActivity extends AbstractGameActivity{
     public static final String LOG_TAG = "CardsGameActivity";
     private static final int TRUE_ANSWER_PROGRESS = 5; //Очки прогресса за правильный ответ
     private static final int FALSE_ANSWER_PROGRESS = -5; //Очки прогресса за не правильный ответ
@@ -39,13 +36,9 @@ public class CardsGameActivity extends AppCompatActivity{
     private static final String SAVE_KEY_VARIANT_3 = "variant3";
     private static final String SAVE_KEY_VARIANT_4 = "variant4";
     private static final String SAVE_KEY_ANSWERS = "answers";
-
-    private Verb[] verbs; //Все глаголы для изучения
-    private Result[] results; //Результаты изучения глагола
-    private int presentVerbNum; //номер текущего глагола
-    private int presentPart; //Текущий этап (0 - инфинитив, 1 - претеритум, 2 - has/ist, 3 - перфект, 4 - если все глаголы повторены)
-
     private boolean[] answers; //For saving color of Answers if reCreate
+
+    private int presentPart; //Текущий этап (0 - инфинитив, 1 - претеритум, 2 - has/ist, 3 - перфект, 4 - если все глаголы повторены)
 
     private TextView translateTextView;
     private TextView verbFormsTextView;
@@ -66,17 +59,16 @@ public class CardsGameActivity extends AppCompatActivity{
 
         //Развертка layout
         setContentView(R.layout.cards_game_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addToolbar();
 
-        //Инициализация кардвью
+        //Add ads
+        layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_cards_game);
+        loadAd();
+
         var1CardView = (CardView) findViewById(R.id.variant1_card_view);
         var2CardView = (CardView) findViewById(R.id.variant2_card_view);
         var3CardView = (CardView) findViewById(R.id.variant3_card_view);
         var4CardView = (CardView) findViewById(R.id.variant4_card_view);
-
-        //Инициализация слушания ответов
         try {
             var1CardView.setOnClickListener(new AnswerListener());
             var2CardView.setOnClickListener(new AnswerListener());
@@ -85,9 +77,7 @@ public class CardsGameActivity extends AppCompatActivity{
         } catch (NullPointerException e){
             Toast.makeText(this, "ERROR Answer Init", Toast.LENGTH_SHORT).show();
         }
-
         var1TextView = (TextView) findViewById(R.id.variant1_text_view);
-        //Инициализация текствью
         var2TextView = (TextView) findViewById(R.id.variant2_text_view);
         var3TextView = (TextView) findViewById(R.id.variant3_text_view);
         var4TextView = (TextView) findViewById(R.id.variant4_text_view);
@@ -97,22 +87,10 @@ public class CardsGameActivity extends AppCompatActivity{
 
         if(savedInstanceState == null) {
             //Достаем глаголы из интента
-            Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
-            verbs = new Verb[parcelableArrayExtra.length];
-            results = new Result[parcelableArrayExtra.length];
-            for (int i = 0; i < parcelableArrayExtra.length; i++) {
-                verbs[i] = (Verb) parcelableArrayExtra[i];
-                results[i] = new Result();
-            }
+            getDataFromIntent();
 
             //Перемешивание глаголов
-            Random random = new Random(System.currentTimeMillis());
-            for (int i = 0; i < verbs.length; i++) {
-                int rndInt = random.nextInt(verbs.length);
-                Verb temp = verbs[i];
-                verbs[i] = verbs[rndInt];
-                verbs[rndInt] = temp;
-            }
+            mixVerbs();
 
             //Отобразить первый глагол
             startVerb();
@@ -185,12 +163,16 @@ public class CardsGameActivity extends AppCompatActivity{
             presentPart++;
 
             //Старт активити с результатом
-            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-            intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
-            intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
-            startActivity(intent);
-            finish();
+            onStopLesson();
         }
+    }
+
+    protected void startResultActivity() {
+        Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+        intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
+        intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
+        startActivity(intent);
+        finish();
     }
 
     //Показать следущий этап (Для нового глагола - startVerb)

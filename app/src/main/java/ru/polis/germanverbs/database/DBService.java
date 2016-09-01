@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -49,6 +48,7 @@ public class DBService {
                 ContentValues contentValues = new ContentValues();
 
                 //Add word data to CV
+                Log.i(LOG_TAG, "Adding: " + line[0]);
 
                 //Если есть 3 форма инфинитив
                 if(line[0].contains("(")){
@@ -67,6 +67,8 @@ public class DBService {
                 //Add translates to CV
                 contentValues.put(Language.ENG.getNameForDB(), line[9]);
                 contentValues.put(Language.RUS.getNameForDB(), line[10]);
+                contentValues.put(Language.ESP.getNameForDB(), line[11]);
+                contentValues.put(Language.FRA.getNameForDB(), line[12]);
 
                 //Write in table WORD
                 long word_id = writableDatabase.insert(DBHelper.TABLE_WORD_NAME, null, contentValues);
@@ -83,8 +85,6 @@ public class DBService {
 
                 //Write in table MISTAKES
                 writableDatabase.insert(DBHelper.TABLE_MISTAKE_NAME, null, contentValues);
-
-                Log.i(LOG_TAG, "Insert word in DB: " + Arrays.toString(line));
             }
         }
         cursor.close();

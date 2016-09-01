@@ -64,10 +64,6 @@ public class Verb implements Parcelable{
         return infinitive;
     }
 
-    public String getInfinitive_3_person() {
-        return infinitive_3_person;
-    }
-
     public String getPrateritum() {
         return prateritum;
     }
