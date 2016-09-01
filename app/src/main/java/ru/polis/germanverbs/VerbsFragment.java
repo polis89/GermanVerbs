@@ -33,17 +33,10 @@ import ru.polis.germanverbs.enums.Language;
 public class VerbsFragment extends ListFragment{
     private static final String LOG_TAG = "ListFragment";
     private Language language;
-    private Cursor cursor;
-    private SQLiteDatabase sqLiteDatabase;
-    private static VerbsFragment verbsFragment;
 
     public static Fragment getNewInstance() {
         Log.i(LOG_TAG, "getNewInstance");
-        if(verbsFragment == null){
-            return new VerbsFragment();
-        } else {
-            return verbsFragment;
-        }
+        return new VerbsFragment();
     }
 
     @Override
@@ -56,8 +49,8 @@ public class VerbsFragment extends ListFragment{
     public void setAdapter(Context context) {
         Log.i(LOG_TAG, "setAdapter " + getId());
         language = ((MainActivity)context).language;
-        sqLiteDatabase = DBService.getInstance(context).getDBHelper().getReadableDatabase();
-        cursor = sqLiteDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null);
+        SQLiteDatabase sqLiteDatabase = DBService.getInstance(context).getDBHelper().getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(DBHelper.TABLE_WORD_NAME, null, null, null, null, null, null);
         setListAdapter(new VerbCursorAdapter(context, cursor, true));
     }
 

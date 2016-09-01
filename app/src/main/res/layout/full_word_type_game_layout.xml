@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="ru.polis.germanverbs.games.CardsGameActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/linear_layout_full_type_words">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

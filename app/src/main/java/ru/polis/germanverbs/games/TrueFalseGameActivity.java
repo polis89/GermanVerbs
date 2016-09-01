@@ -4,54 +4,45 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.PracticeFragment;
 import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.objects.Result;
 import ru.polis.germanverbs.objects.Verb;
 
-public class TrueFalseGameActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String LOG = "TrueFalseGameActivity";
-    public static final int PLAY_TIME = 45;
-    public static final int START_SCORE_STEP = 1;
+public class TrueFalseGameActivity extends AbstractGameActivity implements View.OnClickListener {
+    public static final String LOG_TAG = "TrueFalseGameActivity";
     public static final int RIGHT_ANSWER_PROGRESS = 5;
     public static final int FALSE_ANSWER_PROGRESS = -3;
 
+    public static final int PLAY_TIME = 45;
+    public static final int START_SCORE_STEP = 1;
+
+    //Consts for saving recordScore in prefs
     public static final String SHARED_PREF = "prefs";
     public static final String SHARED_PREF_TRUE_FALSE_RECORD = "record";
 
     private Random random;
+    private Question currentQuestion; //Текущий вопрос
     private int score;
     private int scoreStep;
-    private Verb[] verbs; //Все глаголы для изучения
-    private Result[] results; //Результаты изучения глагола
-    private int presentVerbNum; //номер текущего глагола
-    private Question currentQuestion; //Текущий вопрос
     private int record;
+    private TimerAsyncTask time;
 
     private RelativeLayout relativeLayout;
     private TextView scoreView;
     private TextView multipleView;
     private TextView answerView;
     private TextView chronometerView;
-    private TextView recordView;
     private RoundCornerProgressBar recordProgressBar;
-
-    private TimerAsyncTask time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +50,14 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
 
         //Развертка layout
         setContentView(R.layout.true_false_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addToolbar();
 
         //Add ads
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        layoutWithAdView = (LinearLayout) findViewById(R.id.linear_layout_true_false);
+        loadAd();
 
         //Достаем глаголы из интента
-        Parcelable[] parcelableArrayExtra = getIntent().getParcelableArrayExtra(PracticeFragment.RANDOM_VERB_INTENT_EXTRA);
-        verbs = new Verb[parcelableArrayExtra.length];
-        results = new Result[parcelableArrayExtra.length];
-        for (int i = 0; i < parcelableArrayExtra.length; i++){
-            verbs[i] = (Verb) parcelableArrayExtra[i];
-            results[i] = new Result();
-        }
+        getDataFromIntent();
 
         score = 0;
         random = new Random(System.currentTimeMillis());
@@ -87,7 +69,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         answerView = (TextView) findViewById(R.id.gameTrueFalseAnswerView);
         chronometerView = (TextView) findViewById(R.id.chronometer);
         recordProgressBar = (RoundCornerProgressBar) findViewById(R.id.record_progress_bar);
-        recordView = (TextView) findViewById(R.id.textViewRecord);
+        TextView recordView = (TextView) findViewById(R.id.textViewRecord);
 
         record = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
                 .getInt(SHARED_PREF_TRUE_FALSE_RECORD, 0);
@@ -108,7 +90,7 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i(LOG, "onStop");
+        Log.i(LOG_TAG, "onStop");
         if(time != null) {
             time.cancel(false);
         }
@@ -144,6 +126,10 @@ public class TrueFalseGameActivity extends AppCompatActivity implements View.OnC
         if(record < score){
             getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE).edit().putInt(SHARED_PREF_TRUE_FALSE_RECORD, score).commit();
         }
+        onStopLesson();
+    }
+
+    protected void startResultActivity() {
         Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
         intent.putExtra(ResultActivity.VERBS_INTENT_EXTRA, verbs);
         intent.putExtra(ResultActivity.RESULT_INTENT_EXTRA, results);
