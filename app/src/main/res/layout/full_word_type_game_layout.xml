@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/type_word_question_text_view"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textAlignment="center"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

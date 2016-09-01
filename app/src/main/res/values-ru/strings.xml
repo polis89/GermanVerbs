@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_language">Язык</string>
+    <string name="chooseLanguageTitle">Выберите язык</string>
+    <string name="flag_image_description">Флаг</string>
+    <string name="OK">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="game_true">Верно</string>
+    <string name="game_false">Ошибка</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+
+    <string name="practice">Упражнения</string>
+    <string name="verbs">Глаголы</string>
+    <string name="settings">Настройки</string>
+    <string name="help_btn">Информация</string>
+    <string name="info_cards">Составьте спряжение глагола, выбирая из предложенных вариантов ответов.</string>
+    <string name="info_true_or_false">Упражнение на скорость. Правильно ли предложенное спряжение? Проверьте как можно быстрее.</string>
+    <string name="info_fill_the_gaps">Заполните пропуски в спряжении глагола.</string>
+    <string name="info_type_word">Напечатайте спряжение глагола.</string>
+    <string name="hint_letters">Подсказка: чтобы напечатать Ä-Ö-Ü-ß длительно зажимайте A-O-U-S соответственно. (Используя английскую раскладку)</string>
+
+    <string name="true_or_false">Правда или ложь</string>
+    <string name="cards">Карточки</string>
+    <string name="fill_the_gaps">Пропуски</string>
+    <string name="type_words">Правописание</string>
+
+    <string name="result_activity_name">Результат</string>
+    <string name="result_perfect">Идеально</string>
+    <string name="result_very_good">Отлично</string>
+    <string name="result_good">Хорошо</string>
+    <string name="result_not_good">Удовлетворительно</string>
+    <string name="result_bad">Посредственно</string>
+    <string name="result_very_bad">Плохо</string>
+    <string name="result_awful">Ужасно</string>
+
+    <string name="not_enought_verb_message">Не хватает глаголов. Активируйте больше глаголов или умеьшите число глаголов в упражнении.</string>
+    <string name="true_answer_cnt">Правильных ответов: %d</string>
+    <string name="false_answer_cnt">Ошибок: %d</string>
+    <string name="result_percent">Точность: %d </string>
+    <string name="true_false_start">Старт</string>
+    <string name="true_false_score">Счет: %d</string>
+    <string name="true_false_multiple">Множитель: %d</string>
+    <string name="true_false_your_score">Ваш счет: %d</string>
+    <string name="true_false_record">Рекорд: %d</string>
+    <string name="type_word_hint">Введите здесь</string>
+    <string name="type_word_button_dsc">Проверка вопроса</string>
+
+    <string name="hint_presens">Введите глагол в präsens</string>
+    <string name="hint_prateritum">Введите глагол в präteritum</string>
+    <string name="hint_perfect">Введите глагол в perfect</string>
+
+    <!--Preferences-->
+    <string name="clear_progress">Сбросить прогресс</string>
+    <string name="choose_language">Выбрать язык</string>
+    <string name="reset">Сбросить прогресс</string>
+    <string name="reset_apply_message">Аннулировать ваш прогресс?</string>
+    <string name="words_in_exercise">Количество слов в упражнениях</string>
+    <string name="number_picker_dialog_cards_game">Количество слов в упражнении Карточки</string>
+    <string name="number_picker_dialog_fill_the_gaps_game">Количество слов в упражнении Пропуски</string>
+    <string name="number_picker_dialog_type_the_word_game">Количество слов в упражнении Правописание</string>
+    <string name="remove_ads">Убрать рекламу</string>
+    <string name="main_settings">Главные настройки</string>
+    <string name="language_description">Выбрать язык</string>
+    <string name="reset_description">Сбросить прогресс</string>
+</resources>

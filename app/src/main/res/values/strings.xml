@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">German Verbs</string>
+    <string name="app_name" translatable="false">German Verbs</string>
     <string name="action_language">Language</string>
     <string name="chooseLanguageTitle">Choose language</string>
     <string name="flag_image_description">Flag</string>
@@ -34,7 +34,7 @@
     <string name="result_very_bad">Bad</string>
     <string name="result_awful">Awful</string>
 
-    <string name="not_enought_verb_message">Make more verbs active or reduce number of verbs to learn</string>
+    <string name="not_enought_verb_message">not enoughMake more verbs active or reduce number of verbs to learn</string>
     <string name="true_answer_cnt">Right answers: %d</string>
     <string name="false_answer_cnt">Mistakes: %d</string>
     <string name="result_percent">Accuracy: %d </string>
@@ -70,8 +70,6 @@
     <string name="reset_description">Progress reset</string>
 
     <!--Ad-->
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
-
-    <!--TEMP-->
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 </resources>
