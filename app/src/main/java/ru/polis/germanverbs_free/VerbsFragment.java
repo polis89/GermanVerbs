@@ -1,4 +1,4 @@
-package ru.polis.germanverbs;
+package ru.polis.germanverbs_free;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -21,9 +21,9 @@ import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
-import ru.polis.germanverbs.database.DBHelper;
-import ru.polis.germanverbs.database.DBService;
-import ru.polis.germanverbs.enums.Language;
+import ru.polis.germanverbs_free.database.DBHelper;
+import ru.polis.germanverbs_free.database.DBService;
+import ru.polis.germanverbs_free.enums.Language;
 
 /**
  * Fragment to show all Verbs

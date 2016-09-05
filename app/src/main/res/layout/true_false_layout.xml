@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="ru.polis.germanverbs.games.TrueFalseGameActivity"
+    tools:context="ru.polis.germanverbs_free.games.TrueFalseGameActivity"
     android:background="@color/background"
     android:orientation="vertical">
 

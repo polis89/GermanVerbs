@@ -1,10 +1,12 @@
-package ru.polis.germanverbs;
+package ru.polis.germanverbs_free;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,8 +20,8 @@ import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import ru.polis.germanverbs.database.DBHelper;
-import ru.polis.germanverbs.database.DBService;
+import ru.polis.germanverbs_free.database.DBHelper;
+import ru.polis.germanverbs_free.database.DBService;
 
 public class SettingsFragment extends Fragment {
     private TextView cardsNumber;
@@ -78,7 +80,17 @@ public class SettingsFragment extends Fragment {
                 showResetProgressConfirm();
             }
         });
-        viewResetRelaytive.setOnTouchListener(onTouchListener);
+        view.findViewById(R.id.card_view_remove_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = "ru.polis.germanverbs"; //
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+        });
 
         cardsNumber = (TextView)view.findViewById(R.id.settings_cards_number);
         fillGapsNumber = (TextView)view.findViewById(R.id.settings_fill_the_gaps_number);

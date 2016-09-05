@@ -1,11 +1,11 @@
-package ru.polis.germanverbs.database;
+package ru.polis.germanverbs_free.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import ru.polis.germanverbs.enums.Language;
+import ru.polis.germanverbs_free.enums.Language;
 
 /**
  * To open DB

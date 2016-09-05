@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.objects;
+package ru.polis.germanverbs_free.objects;
 
 import android.os.Parcel;
 import android.os.Parcelable;

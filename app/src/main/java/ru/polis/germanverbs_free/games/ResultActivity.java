@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.games;
+package ru.polis.germanverbs_free.games;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -14,11 +14,11 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import ru.polis.germanverbs.MainActivity;
-import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.database.DBService;
-import ru.polis.germanverbs.objects.Result;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.MainActivity;
+import ru.polis.germanverbs_free.R;
+import ru.polis.germanverbs_free.database.DBService;
+import ru.polis.germanverbs_free.objects.Result;
+import ru.polis.germanverbs_free.objects.Verb;
 
 /**
  *

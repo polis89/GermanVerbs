@@ -1,4 +1,4 @@
-package ru.polis.germanverbs;
+package ru.polis.germanverbs_free;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -35,8 +35,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import ru.polis.germanverbs.database.DBService;
-import ru.polis.germanverbs.enums.Language;
+import ru.polis.germanverbs_free.database.DBService;
+import ru.polis.germanverbs_free.enums.Language;
 
 public class MainActivity extends AppCompatActivity {
     public static final String LOG_TAG = "MainActivityLog";

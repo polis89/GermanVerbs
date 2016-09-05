@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ru.polis.germanverbs.MainActivity">
+    tools:context="ru.polis.germanverbs_free.MainActivity">
     <item
         android:id="@+id/action_language"
         android:orderInCategory="100"

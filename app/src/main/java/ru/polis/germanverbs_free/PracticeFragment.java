@@ -1,4 +1,4 @@
-package ru.polis.germanverbs;
+package ru.polis.germanverbs_free;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import ru.polis.germanverbs.database.DBService;
-import ru.polis.germanverbs.games.CardsGameActivity;
-import ru.polis.germanverbs.games.FullWordTypeGameActivity;
-import ru.polis.germanverbs.games.TrueFalseGameActivity;
-import ru.polis.germanverbs.games.TypeWordGameActivity;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.database.DBService;
+import ru.polis.germanverbs_free.games.CardsGameActivity;
+import ru.polis.germanverbs_free.games.FullWordTypeGameActivity;
+import ru.polis.germanverbs_free.games.TrueFalseGameActivity;
+import ru.polis.germanverbs_free.games.TypeWordGameActivity;
+import ru.polis.germanverbs_free.objects.Verb;
 
 /**
  * Fragment to show all type of Practices (Games)

@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.database;
+package ru.polis.germanverbs_free.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
-import ru.polis.germanverbs.enums.Language;
-import ru.polis.germanverbs.objects.Result;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.enums.Language;
+import ru.polis.germanverbs_free.objects.Result;
+import ru.polis.germanverbs_free.objects.Verb;
 
 /**
  * Service to connect with DB

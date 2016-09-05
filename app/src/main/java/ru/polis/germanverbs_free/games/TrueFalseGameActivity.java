@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.games;
+package ru.polis.germanverbs_free.games;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +15,8 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.R;
+import ru.polis.germanverbs_free.objects.Verb;
 
 public class TrueFalseGameActivity extends AbstractGameActivity implements View.OnClickListener {
     public static final String LOG_TAG = "TrueFalseGameActivity";

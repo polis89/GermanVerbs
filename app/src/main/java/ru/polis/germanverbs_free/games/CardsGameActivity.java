@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.games;
+package ru.polis.germanverbs_free.games;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.objects.Result;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.R;
+import ru.polis.germanverbs_free.objects.Result;
+import ru.polis.germanverbs_free.objects.Verb;
 
 /**
  *

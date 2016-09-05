@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.games;
+package ru.polis.germanverbs_free.games;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -15,10 +15,10 @@ import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.Random;
 
-import ru.polis.germanverbs.PracticeFragment;
-import ru.polis.germanverbs.R;
-import ru.polis.germanverbs.objects.Result;
-import ru.polis.germanverbs.objects.Verb;
+import ru.polis.germanverbs_free.PracticeFragment;
+import ru.polis.germanverbs_free.R;
+import ru.polis.germanverbs_free.objects.Result;
+import ru.polis.germanverbs_free.objects.Verb;
 
 /**
  * Created by Dmitrii Polianskii.

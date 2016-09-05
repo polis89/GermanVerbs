@@ -1,4 +1,4 @@
-package ru.polis.germanverbs.games;
+package ru.polis.germanverbs_free.games;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import ru.polis.germanverbs.R;
+import ru.polis.germanverbs_free.R;
 
 public class FullWordTypeGameActivity extends AbstractGameActivity implements TextView.OnEditorActionListener, View.OnClickListener {
     public static final String LOG_TAG = "FullWordTypeGameActiv";

@@ -1,4 +1,4 @@
-package ru.polis.germanverbs;
+package ru.polis.germanverbs_free;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

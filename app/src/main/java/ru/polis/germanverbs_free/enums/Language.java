@@ -1,6 +1,6 @@
-package ru.polis.germanverbs.enums;
+package ru.polis.germanverbs_free.enums;
 
-import ru.polis.germanverbs.R;
+import ru.polis.germanverbs_free.R;
 
 /**
  * Enum of Languages

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">German Verbs</string>
+    <string name="app_name" translatable="false">German Verbs (FREE)</string>
     <string name="action_language">Language</string>
     <string name="chooseLanguageTitle">Choose language</string>
     <string name="flag_image_description">Flag</string>
@@ -72,4 +72,5 @@
     <!--Ad-->
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="title_without_free">German Verbs</string>
 </resources>
