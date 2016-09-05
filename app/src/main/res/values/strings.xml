@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">German Verbs (FREE)</string>
+    <string name="app_name" translatable="false">German Verbs FREE</string>
     <string name="action_language">Language</string>
     <string name="chooseLanguageTitle">Choose language</string>
     <string name="flag_image_description">Flag</string>
