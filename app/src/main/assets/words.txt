@@ -66,7 +66,7 @@ leihen-lieh-hat geliehen-liehte-liente-leih-geleihen-gelieht-geliehtet-to lend-�
 lesen(liest)-las-hat gelesen-lies-leste-läs-geliest-gelosen-gelasen-to read-читать-leer-lire
 liegen-lag-hat gelegen-log-lagte-lieg-gelagt-gelogen-gelegt-to be lying-лежать-estar tumbado-être couché
 lügen-log-hat gelogen-lag-lügte-lüg-gelogt-gelügt-gelügen-to lie-врать-mentir-mentir
-mahlen-mahlte-hat gemahlen-mehlt-mahlt-mehlte-gemahlt-gemehlen-gemehlt-to grind-красить-moler-moudre
+mahlen-mahlte-hat gemahlen-mehlt-mahlt-mehlte-gemahlt-gemehlen-gemehlt-to grind-молоть-moler-moudre
 meiden-mied-hat gemieden-mitt-mid-med-gemeidet-gemitten-gemiedet-to avoid-избегать-evitar-éviter
 melken-molk-hat gemolken-milk-malk-melk-gemolkt-gemelkt-gemelken-to milk-доить-ordeñar-traire
 messen(misst)-maß-hat gemessen-miss-meiß-meißte-gemissen-gemiest-gemesst-to measure-измерять-medir-mesurer

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">German Verbs FREE</string>
+    <string name="title_without_free" translatable="false">German Verbs</string>
     <string name="action_language">Language</string>
     <string name="chooseLanguageTitle">Choose language</string>
     <string name="flag_image_description">Flag</string>
@@ -70,7 +71,6 @@
     <string name="reset_description">Progress reset</string>
 
     <!--Ad-->
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="title_without_free">German Verbs</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-6613679663152298/7853004768</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-6613679663152298/1946071967</string>
 </resources>
