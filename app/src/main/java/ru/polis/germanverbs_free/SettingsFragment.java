@@ -74,6 +74,7 @@ public class SettingsFragment extends Fragment {
         viewLanguageRelaytive.setOnTouchListener(onTouchListener);
 
         RelativeLayout viewResetRelaytive = (RelativeLayout) view.findViewById(R.id.settings_reset_relative_l);
+        viewResetRelaytive.setOnTouchListener(onTouchListener);
         viewResetRelaytive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
