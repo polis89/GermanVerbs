@@ -35,7 +35,7 @@
     <string name="result_very_bad">Bad</string>
     <string name="result_awful">Awful</string>
 
-    <string name="not_enought_verb_message">not enoughMake more verbs active or reduce number of verbs to learn</string>
+    <string name="not_enought_verb_message">Not enough verbs. Make more verbs active or reduce number of verbs to learn</string>
     <string name="true_answer_cnt">Right answers: %d</string>
     <string name="false_answer_cnt">Mistakes: %d</string>
     <string name="result_percent">Accuracy: %d </string>
@@ -47,7 +47,7 @@
     <string name="type_word_hint">Type here</string>
     <string name="type_word_button_dsc">check answer</string>
 
-    <string name="hint_presens">Enter verb in presens</string>
+    <string name="hint_presens">Enter verb in präsens</string>
     <string name="hint_prateritum">Enter verb in präteritum</string>
     <string name="hint_perfect">Enter verb in perfect</string>
 

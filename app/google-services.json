@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "366538198810",
+    "firebase_url": "https://admob-app-id-7992605564.firebaseio.com",
+    "project_id": "admob-app-id-7992605564",
+    "storage_bucket": "admob-app-id-7992605564.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366538198810:android:7a3c7cd2c95978d6",
+        "android_client_info": {
+          "package_name": "ru.polis.germanverbs_free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366538198810-ttd20tmv5pnv8eojcoh58o793212tn9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDc9yLjdt1yc_fMxg5SJ6aMHdSccl1fQE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

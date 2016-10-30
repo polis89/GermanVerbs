@@ -336,7 +336,7 @@ public class CardsGameActivity extends AbstractGameActivity{
                 results[presentVerbNum].addProgress(TRUE_ANSWER_PROGRESS);
                 cardAnswerView.setCardBackgroundColor(getResources().getColor(R.color.colorTrueAnswer));
                 if(presentPart == 3){ //Перед переходом к следующему глаголу показывает правильное спряжение
-                    getTextForResultTextView(presentPart);
+                    verbFormsTextView.setText(getTextForResultTextView(presentPart));
                 }
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
