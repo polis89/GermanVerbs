@@ -49,10 +49,14 @@ public abstract class AbstractGameActivity extends AppCompatActivity {
         mInterstitialAd = new InterstitialAd(this);
         AdView adView = (AdView) layoutWithAdView.findViewById(R.id.adView);
         if(isOnline(this)){
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(getResources().getString(R.string.testDeviceId))
+                    .build();
             adView.loadAd(adRequest);
             mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_ad_unit_id));
-            AdRequest ar = new AdRequest.Builder().build();
+            AdRequest ar = new AdRequest.Builder()
+                    .addTestDevice(getResources().getString(R.string.testDeviceId))
+                    .build();
             mInterstitialAd.loadAd(ar);
             mInterstitialAd.setAdListener(new AdListener() {
                 @Override

@@ -73,4 +73,5 @@
     <!--Ad-->
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-6613679663152298/7853004768</string>
     <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-6613679663152298/1946071967</string>
+    <string name="testDeviceId" translatable="false">A0B61B5C4995EF9108E6ABAB35D6FE5B</string>
 </resources>

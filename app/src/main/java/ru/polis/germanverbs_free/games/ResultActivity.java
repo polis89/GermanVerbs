@@ -49,7 +49,9 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(getResources().getString(R.string.testDeviceId))
+                .build();
         mAdView.loadAd(adRequest);
 
         //Достаем глаголы и результаты из интента

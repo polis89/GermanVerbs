@@ -88,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
             ll.removeView(adV);
         }else {
             AdView mAdView = (AdView) findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()     // All emulators
+                    .addTestDevice(getResources().getString(R.string.testDeviceId))
+                    .build();
             mAdView.loadAd(adRequest);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
